@@ -1,0 +1,1098 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Contacts · Drive Phangan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@400;500;600;700;800&display=swap">
+<style>
+/* Layout: dark island-night site — full-bleed sunset hero, then card bands in the Rental-terms system (same tokens as terms page). */
+:root{
+  --tp-bg:#0A0E18;--tp-band:#0D1220;--tp-card:#121828;
+  --tp-text:#F4F1EA;--tp-soft:#D9DCE6;--tp-muted:#A9B0C2;
+  --tp-orange:#FF7A1A;--tp-orange-hi:#FF9440;--tp-on-accent:#1A0C00;
+  --tp-radius:20px;--tp-h1-size:76px;
+  --tp-line:color-mix(in srgb,var(--tp-text) 8%,transparent);
+  --tp-tint:color-mix(in srgb,var(--tp-orange) 16%,transparent);
+  --tp-accent-text:color-mix(in srgb,var(--tp-orange) 55%,var(--tp-text));
+  --tp-display:Anton,Impact,sans-serif;
+  --tp-sans:Manrope,system-ui,sans-serif;
+  color-scheme:dark;
+}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--tp-bg);color:var(--tp-text);font-family:var(--tp-sans);font-size:16px;line-height:1.6}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--tp-bg)}
+*{box-sizing:border-box}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{max-width:1240px;margin:0 auto;padding-left:max(32px,env(safe-area-inset-left,0px));padding-right:max(32px,env(safe-area-inset-right,0px))}
+.kicker{margin:0;color:var(--tp-orange);font-weight:800;font-size:13px;letter-spacing:.14em;text-transform:uppercase}
+.h1{margin:12px 0 0;font-family:var(--tp-display);font-weight:400;font-size:var(--tp-h1-size);line-height:1.02;text-transform:uppercase;text-wrap:balance}
+.h1 span,.h2 span{color:var(--tp-orange)}
+.h1 span{display:block;white-space:nowrap}
+.h2{margin:10px 0 0;font-family:var(--tp-display);font-weight:400;font-size:calc(var(--tp-h1-size)*.64);line-height:1.04;text-transform:uppercase;text-wrap:balance}
+.lead{margin:16px 0 0;max-width:540px;color:var(--tp-muted);font-size:17px}
+:focus-visible{outline:2px solid var(--tp-orange);outline-offset:3px}
+
+/* buttons */
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:50px;padding:0 26px;border-radius:999px;font:800 15px var(--tp-sans);text-decoration:none;border:0;cursor:pointer;transition:background .2s ease,transform .2s ease}
+.btn svg{width:18px;height:18px;flex:none}
+.btn--primary{background:var(--tp-orange);color:var(--tp-on-accent)}.btn--primary:hover{background:var(--tp-orange-hi)}
+.btn--ghost{background:color-mix(in srgb,var(--tp-text) 6%,transparent);color:var(--tp-text);border:1px solid color-mix(in srgb,var(--tp-text) 18%,transparent)}
+.btn--ghost:hover{background:color-mix(in srgb,var(--tp-text) 12%,transparent)}
+.btn--glass{background:color-mix(in srgb,var(--tp-bg) 28%,transparent);color:var(--tp-text);border:1px solid color-mix(in srgb,var(--tp-text) 30%,transparent);backdrop-filter:blur(10px) saturate(140%);-webkit-backdrop-filter:blur(10px) saturate(140%);transition:background .25s ease,color .25s ease,border-color .25s ease,transform .2s ease}
+.btn--glass:hover,.btn--glass:focus-visible{background:var(--tp-orange);color:var(--tp-on-accent);border-color:var(--tp-orange)}
+.ftr-cta .btn{min-width:200px}
+.cta-btns{display:grid;grid-template-columns:1fr 1fr;width:max-content;max-width:100%;margin-top:28px}
+@media (max-width:760px){.cta-btns{width:100%}.ftr-cta .btn{min-width:0;padding:0 10px;font-size:14px;white-space:nowrap}.ftr-cta .btn svg{display:none}}
+.btn:active{transform:translateY(1px)}
+
+/* preview note */
+.note{background:color-mix(in srgb,var(--tp-orange) 10%,var(--tp-bg));color:var(--tp-accent-text);font-size:13px;font-weight:600;text-align:center;padding-block:8px}
+
+/* header */
+.hdr{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:color-mix(in srgb,var(--tp-bg) 30%,transparent);backdrop-filter:blur(16px) saturate(140%);-webkit-backdrop-filter:blur(16px) saturate(140%);border-bottom:1px solid color-mix(in srgb,var(--tp-text) 12%,transparent)}
+.hdr .wrap{display:flex;align-items:center;gap:24px;min-height:84px}
+.brand{display:flex;align-items:center;gap:8px;text-decoration:none;flex:none}
+.brand-mark{position:relative;display:block;flex:none;width:58px;height:58px;border-radius:50%;overflow:hidden}
+.brand-mark img{position:absolute;max-width:none;width:132%;left:-15.26%;top:-14.53%}
+.brand-word{height:46px;width:auto}
+.nav{display:flex;gap:4px;margin-left:auto}
+.nav a{padding:8px 12px;border-radius:999px;text-decoration:none;color:var(--tp-soft);font-weight:700;font-size:14px;white-space:nowrap}
+.nav a:hover{color:var(--tp-text);background:color-mix(in srgb,var(--tp-text) 7%,transparent)}
+.nav a[aria-current]{color:var(--tp-orange)}
+.langs{position:relative;flex:none}
+.lang-toggle{display:flex;align-items:center;gap:7px;min-height:42px;padding:0 12px 0 13px;border:1px solid color-mix(in srgb,var(--tp-text) 22%,transparent);border-radius:999px;background:color-mix(in srgb,var(--tp-bg) 25%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:var(--tp-text);font:800 13px var(--tp-sans);letter-spacing:.06em;cursor:pointer;transition:border-color .2s ease,background .2s ease}
+.lang-toggle:hover,.lang-toggle[aria-expanded=true]{border-color:var(--tp-orange)}
+.lang-globe{width:17px;height:17px;color:var(--tp-orange)}
+.lang-chev{width:15px;height:15px;transition:transform .25s ease}
+.lang-toggle[aria-expanded=true] .lang-chev{transform:rotate(180deg)}
+.lang-menu{position:absolute;right:0;top:calc(100% + 8px);z-index:60;display:flex;flex-direction:column;gap:2px;min-width:190px;padding:6px;border-radius:16px;background:color-mix(in srgb,var(--tp-card) 85%,transparent);backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);border:1px solid color-mix(in srgb,var(--tp-text) 14%,transparent);box-shadow:0 24px 60px rgba(0,0,0,.45)}
+.lang-menu[hidden]{display:none}
+.lang-menu button{display:flex;align-items:center;gap:12px;width:100%;padding:10px 12px;border:0;border-radius:11px;background:transparent;color:var(--tp-soft);font:600 15px var(--tp-sans);text-align:left;cursor:pointer}
+.lang-menu button:hover,.lang-menu button:focus-visible{background:color-mix(in srgb,var(--tp-text) 8%,transparent);color:var(--tp-text)}
+.lang-menu b{width:26px;font-weight:800;font-size:13px;letter-spacing:.06em;color:var(--tp-muted)}
+.lang-menu span{flex:1}
+.lang-check{width:16px;height:16px;color:var(--tp-orange);visibility:hidden}
+.lang-menu button[aria-pressed=true]{color:var(--tp-text)}
+.lang-menu button[aria-pressed=true] b{color:var(--tp-orange)}
+.lang-menu button[aria-pressed=true] .lang-check{visibility:visible}
+.hdr .btn{min-height:42px;padding:0 18px;font-size:14px}
+.menu-btn{display:none;margin-left:auto;width:44px;height:44px;border-radius:999px;border:1px solid color-mix(in srgb,var(--tp-text) 20%,transparent);background:transparent;color:var(--tp-text);cursor:pointer}
+.menu-btn svg{width:20px;height:20px;margin:auto}
+
+/* phone menu: glass panel under the header */
+.mnav{position:fixed;left:max(16px,env(safe-area-inset-left,0px));right:max(16px,env(safe-area-inset-right,0px));z-index:55;display:flex;flex-direction:column;gap:6px;padding:8px;border-radius:20px;background:color-mix(in srgb,var(--tp-card) 40%,transparent);backdrop-filter:blur(24px) saturate(160%);-webkit-backdrop-filter:blur(24px) saturate(160%);border:1px solid color-mix(in srgb,var(--tp-text) 16%,transparent);box-shadow:0 24px 60px rgba(0,0,0,.45)}
+.mnav[hidden]{display:none}
+.mnav a{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-radius:14px;text-decoration:none;font-weight:700;font-size:16px;color:var(--tp-text);background:color-mix(in srgb,var(--tp-bg) 30%,transparent);border:1px solid color-mix(in srgb,var(--tp-text) 12%,transparent);transition:background .2s ease,border-color .2s ease}
+.mnav a::after{content:"";width:8px;height:8px;border-top:2px solid currentColor;border-right:2px solid currentColor;transform:rotate(45deg);opacity:.5}
+.mnav a:hover{background:color-mix(in srgb,var(--tp-text) 12%,transparent)}
+.mnav a[aria-current]{color:var(--tp-orange);background:color-mix(in srgb,var(--tp-orange) 14%,transparent);border-color:color-mix(in srgb,var(--tp-orange) 50%,transparent)}
+.mnav a[aria-current]::after{opacity:1}
+
+/* hero */
+.hero{position:relative;overflow:hidden;background:var(--tp-bg);margin-top:-84px}
+.hero-img{position:absolute;top:0;right:0;width:72%;height:100%;object-fit:cover;object-position:45% center}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--tp-bg) 28%,rgba(10,14,24,.75) 42%,rgba(10,14,24,0) 62%),linear-gradient(0deg,var(--tp-bg) 0%,rgba(10,14,24,0) 22%)}
+.hero .wrap{position:relative;z-index:1;padding-block:180px 210px}
+.hero .lead{color:var(--tp-soft)}
+.hero .btns{margin-top:32px}
+
+/* about us */
+.about{position:relative;z-index:2;margin-top:-150px}
+.about-card{padding:36px 40px;border-radius:calc(var(--tp-radius)*1.2);background:color-mix(in srgb,var(--tp-card) 40%,transparent);backdrop-filter:blur(16px) saturate(140%);-webkit-backdrop-filter:blur(16px) saturate(140%);border:1px solid color-mix(in srgb,var(--tp-text) 12%,transparent)}
+.about-head{padding-left:18px;border-left:4px solid var(--tp-orange)}
+.about-title{margin:8px 0 0;font-family:var(--tp-display);font-weight:400;font-size:clamp(30px,3.6vw,46px);line-height:1.05;text-transform:uppercase;text-wrap:balance}
+.stats-k{margin:28px 0 0}
+.about-brand{color:var(--tp-orange)}
+.about-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;margin-top:24px}
+.about-text p{margin:0 0 14px;color:var(--tp-soft)}
+.about-text p:last-child{margin:0}
+.checks{display:flex;flex-direction:column;gap:14px;margin:0;padding:0 0 0 40px;list-style:none;border-left:1px solid var(--tp-line);color:var(--tp-soft);font-size:15px;line-height:1.5}
+.checks li{display:flex;gap:12px;align-items:flex-start}
+.checks svg{flex:none;width:20px;height:20px;margin-top:1px;color:var(--tp-orange)}
+.checks b{color:var(--tp-text)}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin:16px 0 0;padding:0;list-style:none}
+.stats li{display:flex;gap:14px;align-items:flex-start;padding:20px;border-radius:var(--tp-radius);background:color-mix(in srgb,var(--tp-card) 55%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid color-mix(in srgb,var(--tp-text) 10%,transparent);transition:transform .25s ease,border-color .25s ease}
+.stats li:hover{transform:translateY(-4px);border-color:color-mix(in srgb,var(--tp-orange) 50%,transparent)}
+.ico{flex:none;display:grid;place-items:center;width:46px;height:46px;border-radius:14px;background:var(--tp-tint);color:var(--tp-orange)}
+.ico svg{width:23px;height:23px}
+.stats b{display:block;font-weight:800;font-size:16px;line-height:1.3}
+.stats div span{display:block;margin-top:4px;color:var(--tp-muted);font-size:14px;line-height:1.45}
+
+/* rides */
+.section{padding-block:96px}
+.rides-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:40px}
+.ride{display:flex;flex-direction:column;border-radius:calc(var(--tp-radius)*1.2);background:var(--tp-card);border:1px solid var(--tp-line);overflow:hidden;transition:border-color .25s ease,transform .25s ease}
+.ride:hover{border-color:color-mix(in srgb,var(--tp-orange) 50%,transparent);transform:translateY(-4px)}
+.ride-media{aspect-ratio:1000/325;max-width:100%;background:#000;overflow:hidden}
+.ride-media img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+.ride:hover .ride-media img{transform:scale(1.04)}
+.ride-body{display:flex;flex-direction:column;gap:14px;padding:26px 28px 28px;flex:1}
+.ride h3{margin:0;font-family:var(--tp-display);font-weight:400;font-size:36px;line-height:1;text-transform:uppercase}
+.ride p{margin:0;color:var(--tp-muted)}
+.rows{margin:0;padding:0;list-style:none;border-radius:14px;overflow:hidden;border:1px solid var(--tp-line)}
+.rows li{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:11px 16px;background:color-mix(in srgb,var(--tp-bg) 45%,transparent);font-weight:700;font-size:15px}
+.rows li+li{border-top:1px solid var(--tp-line)}
+.chip{flex:none;padding:5px 12px;border-radius:999px;background:color-mix(in srgb,var(--tp-orange) 18%,transparent);color:var(--tp-accent-text);font-weight:700;font-size:13px;white-space:nowrap;font-variant-numeric:tabular-nums}
+.ride .btn{margin-top:auto;align-self:flex-start}
+
+
+/* ride picker: heading on top, circle illustration with its two words around the rim */
+.rides-head{text-align:center}
+.rides-head .lead{margin-inline:auto;max-width:none}
+.rp{position:relative;width:min(900px,calc(100vw - 48px));max-width:none;margin:32px 0 0 50%;translate:-50% 0}
+.rides{overflow-x:clip}
+/* desktop: heading above the circle; the explore buttons sit in the picture under the vehicles */
+@media (min-width:901px){
+  .rides-head .kicker{font-size:16px;letter-spacing:.16em}
+  .rides-head .rides-btns{display:none}
+  .rides-head .lead{margin-top:10px}
+}
+@media (max-width:900px){.rp-tag{display:none}}
+.rides-btns{justify-content:center;margin-top:24px}
+.rides-btns .btn{transition:background .25s ease,color .25s ease,border-color .25s ease,transform .2s ease}
+.rp-svg{display:block;width:100%;height:auto;overflow:visible;-webkit-user-select:none;user-select:none}
+.rp-dim,.rp-hi{opacity:0;pointer-events:none;transition:opacity .35s ease}
+.rp-hot,.rp-tag{cursor:pointer;outline:none;-webkit-tap-highlight-color:transparent}
+.rp-hot polygon{fill:transparent}
+.rp-tag{position:absolute;transform:translate(-50%,-50%);min-height:48px;padding:0 22px;border-radius:999px;background:color-mix(in srgb,var(--tp-bg) 25%,transparent);border:1px solid color-mix(in srgb,var(--tp-text) 35%,transparent);backdrop-filter:blur(10px) saturate(140%);-webkit-backdrop-filter:blur(10px) saturate(140%);text-shadow:0 1px 2px rgba(0,0,0,.45);color:var(--tp-text);font-weight:800;font-size:15px;white-space:nowrap;text-decoration:none;box-shadow:0 10px 30px rgba(0,0,0,.35);transition:background .25s ease,color .25s ease,transform .25s ease}
+@media (max-width:760px){.rides-btns{flex-wrap:nowrap}.rides-btns .btn{flex:1;padding:0 12px;font-size:14px;white-space:nowrap}.rides-btns .btn svg{display:none}.rp{width:calc(100% + 12px);margin:24px -6px 0;translate:none}.rp-tag{display:none}}
+/* active zone: finger (data-active) or keyboard focus everywhere; mouse hover only on devices that hover */
+.rides:is([data-active="cars"],:has([data-zone="cars"]:focus-visible)) .rp-dim{opacity:1}
+.rides:is([data-active="cars"],:has([data-zone="cars"]:focus-visible)) .rp-hi[data-for="cars"]{opacity:1}
+.rides:is([data-active="cars"],:has([data-zone="cars"]:focus-visible)) .rp-tag[data-tag="cars"]{background:var(--tp-orange);color:var(--tp-on-accent);border-color:var(--tp-orange);transform:translate(-50%,-50%) scale(1.08)}
+.rides:is([data-active="cars"],:has([data-zone="cars"]:focus-visible)) .rides-btns [data-zone="cars"]{background:var(--tp-orange);color:var(--tp-on-accent);border-color:var(--tp-orange)}
+.rides:is([data-active="scooters"],:has([data-zone="scooters"]:focus-visible)) .rp-dim{opacity:1}
+.rides:is([data-active="scooters"],:has([data-zone="scooters"]:focus-visible)) .rp-hi[data-for="scooters"]{opacity:1}
+.rides:is([data-active="scooters"],:has([data-zone="scooters"]:focus-visible)) .rp-tag[data-tag="scooters"]{background:var(--tp-orange);color:var(--tp-on-accent);border-color:var(--tp-orange);transform:translate(-50%,-50%) scale(1.08)}
+.rides:is([data-active="scooters"],:has([data-zone="scooters"]:focus-visible)) .rides-btns [data-zone="scooters"]{background:var(--tp-orange);color:var(--tp-on-accent);border-color:var(--tp-orange)}
+@media (hover:hover){
+.rides:has([data-zone="cars"]:hover) .rp-dim{opacity:1}
+.rides:has([data-zone="cars"]:hover) .rp-hi[data-for="cars"]{opacity:1}
+.rides:has([data-zone="cars"]:hover) .rp-tag[data-tag="cars"]{background:var(--tp-orange);color:var(--tp-on-accent);border-color:var(--tp-orange);transform:translate(-50%,-50%) scale(1.08)}
+.rides:has([data-zone="cars"]:hover) .rides-btns [data-zone="cars"]{background:var(--tp-orange);color:var(--tp-on-accent);border-color:var(--tp-orange)}
+.rides:has([data-zone="scooters"]:hover) .rp-dim{opacity:1}
+.rides:has([data-zone="scooters"]:hover) .rp-hi[data-for="scooters"]{opacity:1}
+.rides:has([data-zone="scooters"]:hover) .rp-tag[data-tag="scooters"]{background:var(--tp-orange);color:var(--tp-on-accent);border-color:var(--tp-orange);transform:translate(-50%,-50%) scale(1.08)}
+.rides:has([data-zone="scooters"]:hover) .rides-btns [data-zone="scooters"]{background:var(--tp-orange);color:var(--tp-on-accent);border-color:var(--tp-orange)}
+}
+
+/* reviews */
+.band{background:var(--tp-band);border-top:1px solid var(--tp-line);border-bottom:1px solid var(--tp-line)}
+.rv-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:20px}
+.rv-sum{display:flex;align-items:center;gap:10px;margin:14px 0 0;color:var(--tp-soft);font-weight:700}
+.rv-g{flex:none;display:grid;place-items:center;width:30px;height:30px;border-radius:9px;background:#fff}
+.rv-g svg{width:18px;height:18px}
+.rv-nav{display:flex;gap:8px}
+.rv-arrow{display:grid;place-items:center;width:46px;height:46px;border-radius:999px;border:1px solid color-mix(in srgb,var(--tp-text) 18%,transparent);background:color-mix(in srgb,var(--tp-text) 6%,transparent);color:var(--tp-text);cursor:pointer;transition:background .2s ease,color .2s ease}
+.rv-arrow:hover{background:var(--tp-orange);color:var(--tp-on-accent);border-color:var(--tp-orange)}
+.rv-arrow svg{width:20px;height:20px}
+.rv-track{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 32px)/3);gap:16px;margin-top:32px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:4px}
+.rv-track::-webkit-scrollbar{display:none}
+.rv-card{scroll-snap-align:start;display:flex;flex-direction:column;gap:12px;min-width:0;padding:22px;border-radius:var(--tp-radius);background:color-mix(in srgb,var(--tp-card) 70%,transparent);border:1px solid var(--tp-line)}
+.rv-card header{display:flex;align-items:center;gap:12px}
+.rv-card header div{flex:1;min-width:0}
+.rv-card header b{display:block;font-weight:800;line-height:1.3}
+.rv-card header span:not(.rv-ava):not(.rv-g){display:block;color:var(--tp-muted);font-size:13px}
+.rv-ava{flex:none;display:grid;place-items:center;width:42px;height:42px;border-radius:999px;background:var(--tp-tint);color:var(--tp-orange);font-weight:800}
+.rv-stars{display:flex;gap:2px;color:var(--tp-orange)}
+.rv-stars svg{width:16px;height:16px}
+.rv-card p{margin:0;color:var(--tp-soft);font-size:15px}
+.rv-card--sample{border-style:dashed}
+.rv-flag{align-self:flex-start;margin-top:auto;padding:4px 10px;border-radius:999px;background:color-mix(in srgb,var(--tp-text) 8%,transparent);color:var(--tp-muted);font-size:12px;font-weight:700}
+.rv-foot{display:flex;justify-content:center;margin-top:32px}
+
+/* footer with the contact call */
+.ftr{position:relative;overflow:hidden;border-top:1px solid var(--tp-line);padding-block:96px 0;color:var(--tp-muted);font-size:14px}
+.ftr-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%}
+.ftr::after{content:"";position:absolute;inset:0;z-index:0;background:linear-gradient(180deg,var(--tp-bg) 0%,color-mix(in srgb,var(--tp-bg) 35%,transparent) 22%,color-mix(in srgb,var(--tp-bg) 10%,transparent) 60%,color-mix(in srgb,var(--tp-bg) 20%,transparent) 100%),linear-gradient(90deg,color-mix(in srgb,var(--tp-bg) 82%,transparent) 0%,color-mix(in srgb,var(--tp-bg) 55%,transparent) 38%,transparent 62%)}
+.cta-text{text-shadow:0 2px 12px rgba(0,0,0,.55)}
+.ftr>.wrap{position:relative;z-index:1}
+.ftr-bar{position:relative;z-index:1;padding-block:28px 24px;background:color-mix(in srgb,var(--tp-bg) 30%,transparent);backdrop-filter:blur(16px) saturate(140%);-webkit-backdrop-filter:blur(16px) saturate(140%);border-top:1px solid color-mix(in srgb,var(--tp-text) 12%,transparent);color:var(--tp-soft)}
+.ftr-bar nav a{color:var(--tp-text)}
+.ftr-cta{position:relative;display:flex;flex-wrap:wrap;align-items:center;gap:24px 40px;padding-bottom:120px}
+.cta-text{flex:1 1 380px;min-width:0}
+.cta-text .lead{color:var(--tp-soft)}
+.ftr-grid{display:flex;flex-wrap:wrap;gap:28px 48px;align-items:flex-start;justify-content:space-between}
+.ftr nav{display:flex;flex-wrap:nowrap;gap:22px;white-space:nowrap}
+.ftr address{white-space:nowrap}
+@media (max-width:760px){.ftr nav{gap:9px;justify-content:space-between;width:100%;font-size:clamp(11px,3.4vw,14px)}.ftr address{font-size:clamp(10px,3.2vw,14px)}}
+.ftr nav a{text-decoration:none;font-weight:700;color:var(--tp-soft)}
+.ftr nav a:hover{color:var(--tp-orange)}
+.ftr address{font-style:normal}
+.ftr-bottom{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;margin-top:20px;padding-top:16px;border-top:1px solid color-mix(in srgb,var(--tp-text) 12%,transparent)}
+.ftr-bottom a{text-decoration:none}.ftr-bottom a:hover{color:var(--tp-text)}
+
+@media (max-width:1080px){
+  .rv-track{grid-auto-columns:calc((100% - 16px)/2)}
+  .nav,.hdr .btn{display:none}
+  .menu-btn{display:grid;margin-left:0;flex:none}
+  .langs{margin-left:auto}
+  .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:760px){
+  :root{--tp-h1-size:52px}
+  .wrap{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+  .brand-word{height:36px}
+  .brand-mark{width:46px;height:46px}
+  .hdr .wrap{gap:12px}
+  .hero-img{position:relative;width:100%;height:calc(50vw + 84px);object-position:center}
+  .hero::after{background:linear-gradient(0deg,var(--tp-bg) 0%,rgba(10,14,24,.0) 30%);height:calc(50vw + 84px)}
+  .hero .wrap{padding-block:8px 96px}
+  .about{margin-top:-64px}
+  .about-card{padding:24px 20px}
+  .about-grid{grid-template-columns:1fr;gap:20px}
+  .checks{padding:20px 0 0;border-left:0;border-top:1px solid var(--tp-line)}
+  .rides-grid{grid-template-columns:1fr}
+  .section{padding-block:64px}
+  .rv-track{grid-auto-columns:85%}
+  .rv-nav{display:none}
+  .ftr{padding-block:64px 0}
+  .ftr-cta{padding-bottom:72px}
+  .ftr-cta .btns{margin-right:0;width:100%}
+  .ftr-cta .btn{flex:1}
+  .ride-body{padding:22px 20px 24px}
+}
+@media (max-width:460px){
+  .stats{gap:10px}
+  .stats li{flex-direction:column;gap:10px;padding:16px}
+  .rows li{flex-wrap:wrap}
+}
+
+/* ================= rental terms (from the reference, restyled in the site's glass look) ================= */
+
+/* Theme tokens — every colour, font and radius on the page comes from these.
+   The design panel edits exactly these variables ("Copy CSS" exports them). */
+.tp{
+  --tp-bg:#0A0E18;--tp-band:#0D1220;--tp-card:#121828;
+  --tp-text:#F4F1EA;--tp-soft:#D9DCE6;--tp-muted:#A9B0C2;
+  --tp-orange:#FF7A1A;--tp-orange-hi:#FF9440;--tp-on-accent:#1A0C00;
+  --tp-font-display:Anton;--tp-display-weight:400;--tp-font-body:Manrope;
+  --tp-radius:20px;--tp-h1-size:72px;
+  /* derived — no need to edit */
+  --tp-line:color-mix(in srgb,var(--tp-text) 8%,transparent);
+  --tp-tint:color-mix(in srgb,var(--tp-orange) 16%,transparent);
+  --tp-accent-text:color-mix(in srgb,var(--tp-orange) 55%,var(--tp-text));
+  --tp-display:var(--tp-font-display),'Noto Sans Thai',Impact,sans-serif;
+  --tp-sans:var(--tp-font-body),'Noto Sans Thai',system-ui,sans-serif;
+  font-family:var(--tp-sans);color:var(--tp-text);background:var(--tp-bg);line-height:1.6}
+.tp *{box-sizing:border-box}
+.tp-wrap{max-width:1240px;margin:0 auto;padding:0 32px}
+.tp-kicker{margin:0;color:var(--tp-orange);font-weight:800;font-size:13px;letter-spacing:.14em;text-transform:uppercase}
+.tp-h1{margin:10px 0 0;font-family:var(--tp-display);font-weight:var(--tp-display-weight);font-size:var(--tp-h1-size);line-height:1.02;text-transform:uppercase;text-wrap:balance}
+.tp-h2{margin:10px 0 0;font-family:var(--tp-display);font-weight:var(--tp-display-weight);font-size:calc(var(--tp-h1-size) * .66);line-height:1.04;text-transform:uppercase;text-wrap:balance}
+.tp-lead{margin:16px 0 0;max-width:560px;color:var(--tp-muted);font-size:17px}
+
+/* hero + glance */
+.tp-hero{padding:64px 0 72px}
+.tp-glance{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:40px 0 0;padding:0;list-style:none}
+.tp-glance li{display:flex;gap:16px;align-items:flex-start;padding:22px;border-radius:var(--tp-radius);background:var(--tp-card);border:1px solid var(--tp-line);transition:transform .25s ease,border-color .25s ease}
+.tp-glance li:hover{transform:translateY(-4px);border-color:color-mix(in srgb,var(--tp-orange) 50%,transparent)}
+.tp-ico{flex:none;display:grid;place-items:center;width:48px;height:48px;border-radius:calc(var(--tp-radius) * .7);background:var(--tp-tint);color:var(--tp-orange)}
+.tp-ico svg{width:24px;height:24px}
+.tp-glance b{display:block;font-weight:800;font-size:18px;line-height:1.3}
+.tp-glance div span{display:block;margin-top:4px;color:var(--tp-muted);font-size:15px;line-height:1.5}
+.tp-glance em{display:block;margin-top:6px;color:var(--tp-accent-text);font-style:normal;font-weight:700;font-size:14px}
+
+/* detailed sections */
+.tp-band{padding:88px 0;background:var(--tp-band);border-top:1px solid var(--tp-line);border-bottom:1px solid var(--tp-line)}
+.tp-band-grid{display:flex;flex-wrap:wrap;gap:48px;align-items:flex-start}
+.tp-band-head{flex:1 1 300px;min-width:0;position:sticky;top:32px}
+.tp-list{flex:2 1 600px;min-width:0;display:flex;flex-direction:column;gap:12px}
+.tp-item{border-radius:var(--tp-radius);background:var(--tp-card);border:1px solid var(--tp-line);transition:border-color .25s ease}
+.tp-item[open],.tp-item:hover{border-color:color-mix(in srgb,var(--tp-orange) 45%,transparent)}
+.tp-item summary{display:flex;align-items:center;gap:18px;padding:22px 24px;cursor:pointer;list-style:none;font-weight:800;font-size:19px;line-height:1.3}
+.tp-item summary::-webkit-details-marker{display:none}
+.tp-item summary:focus-visible{outline:2px solid var(--tp-orange);outline-offset:3px;border-radius:var(--tp-radius)}
+.tp-num{flex:none;width:44px;font-family:var(--tp-display);font-weight:var(--tp-display-weight);font-size:32px;line-height:1;color:var(--tp-orange)}
+.tp-chev{flex:none;margin-left:auto;display:grid;place-items:center;width:36px;height:36px;border-radius:999px;background:color-mix(in srgb,var(--tp-text) 7%,transparent);color:var(--tp-soft);transition:transform .3s cubic-bezier(.2,.8,.2,1),background .25s ease}
+.tp-item[open] .tp-chev{transform:rotate(180deg);background:var(--tp-orange);color:var(--tp-on-accent)}
+.tp-body{padding:0 24px 24px 86px;color:var(--tp-soft)}
+.tp-body p{margin:0 0 12px}
+.tp-body ul{margin:0 0 12px;padding-left:18px}
+.tp-body li{margin-bottom:8px}
+.tp-body li::marker{color:var(--tp-orange)}
+.tp-body b{color:var(--tp-text)}
+.tp-sub{margin:14px 0 8px;font-weight:800;color:var(--tp-text)}
+.tp-actions{margin-top:18px}
+.tp-chips{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:6px}
+.tp-hint{display:block;margin-top:2px;color:var(--tp-muted);font-size:13px}
+.tp-note{margin:4px 0 0;padding:12px 16px;border-radius:calc(var(--tp-radius) * .6);background:color-mix(in srgb,var(--tp-orange) 8%,transparent);color:var(--tp-accent-text);font-size:15px}
+.tp-rows{margin:4px 0 14px;padding:0;list-style:none;border-radius:calc(var(--tp-radius) * .7);overflow:hidden;border:1px solid var(--tp-line)}
+.tp-rows li{display:flex;justify-content:space-between;align-items:center;gap:16px;margin:0;padding:12px 16px;background:color-mix(in srgb,var(--tp-bg) 45%,transparent)}
+.tp-rows li+li{border-top:1px solid var(--tp-line)}
+.tp-chip{flex:none;padding:6px 12px;border-radius:999px;background:color-mix(in srgb,var(--tp-orange) 18%,transparent);color:var(--tp-accent-text);font-weight:700;font-size:13px;white-space:nowrap}
+.tp-chip--free{background:var(--tp-orange);color:var(--tp-on-accent)}
+
+/* contact */
+.tp-cta{padding:96px 0}
+.tp-cta-card{display:flex;flex-wrap:wrap;align-items:center;gap:24px 40px;padding:48px;border-radius:calc(var(--tp-radius) * 1.5);background:var(--tp-card);border:1px solid var(--tp-line);box-shadow:0 40px 100px rgba(0,0,0,.35)}
+.tp-cta-card .tp-h2 span{color:var(--tp-orange)}
+.tp-cta-text{flex:1 1 380px;min-width:0}
+.tp-btns{display:flex;flex-wrap:wrap;gap:12px}
+.tp-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:50px;padding:0 26px;border-radius:999px;font:800 15px var(--tp-sans);text-decoration:none;border:0}
+.tp-btn svg{width:18px;height:18px}
+.tp-btn--primary{background:var(--tp-orange);color:var(--tp-on-accent)}.tp-btn--primary:hover{background:var(--tp-orange-hi);color:var(--tp-on-accent)}
+.tp-btn--ghost{background:color-mix(in srgb,var(--tp-text) 6%,transparent);color:var(--tp-text);border:1px solid color-mix(in srgb,var(--tp-text) 18%,transparent)}.tp-btn--ghost:hover{background:color-mix(in srgb,var(--tp-text) 12%,transparent);color:var(--tp-text)}
+
+@media (max-width:980px){.tp-glance{grid-template-columns:repeat(2,minmax(0,1fr))}.tp-band-head{position:static}}
+@media (max-width:640px){
+  .tp-wrap{padding:0 16px}
+  .tp-hero{padding:40px 0 48px}
+  .tp-h1{font-size:calc(var(--tp-h1-size) * .66)}.tp-h2{font-size:calc(var(--tp-h1-size) * .52)}
+  .tp-glance{grid-template-columns:1fr}
+  .tp-band{padding:56px 0}
+  .tp-item summary{padding:18px;gap:12px;font-size:17px}
+  .tp-num{width:auto;font-size:26px}
+  .tp-body{padding:0 18px 20px}
+  .tp-cta{padding:56px 0}
+  .tp-cta-card{padding:28px 20px}
+  .tp-btn{flex:1}
+  .tp-rows li:has(.tp-chips){flex-wrap:wrap}
+  .tp-chips{justify-content:flex-start}
+}
+/* Thai: the Latin/Cyrillic display faces have no Thai glyphs — Thai headings use Noto Sans Thai, with room for tone marks */
+.tp[lang=th] .tp-h1,.tp[lang=th] .tp-h2{font-family:'Noto Sans Thai',sans-serif;font-weight:800;line-height:1.25}
+
+[hidden]{display:none!important}
+[data-terms-lang]{display:none}[data-terms-lang].is-active{display:block}
+.page-bg{position:absolute;top:0;left:0;right:0;height:724px;z-index:-1;overflow:hidden;pointer-events:none}
+.page-bg img{position:absolute;top:0;height:724px;width:1873px;max-width:none;left:calc((100% - 1873px) * .5)}
+@media (min-width:1874px){.page-bg img{-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}}
+main#top{position:relative;margin-top:-84px}
+.page-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,14,24,.72) 14%,rgba(10,14,24,.35) 40%,rgba(10,14,24,0) 64%),linear-gradient(0deg,var(--tp-bg) 0%,rgba(10,14,24,0) 30%)}
+body{position:relative;isolation:isolate}
+.tp{background:transparent}
+.tp-hero{padding:156px 0 80px}
+.tp-wrap{padding-left:max(32px,env(safe-area-inset-left,0px));padding-right:max(32px,env(safe-area-inset-right,0px))}
+.tp-lead{color:var(--tp-soft)}
+.tp-hero .tp-kicker,.tp-hero .tp-h1{text-shadow:0 2px 12px rgba(0,0,0,.6)}
+.tp-h1 span{color:var(--tp-orange)}
+.tp-hero .tp-lead{display:inline-block;max-width:600px;padding:12px 18px;border-radius:14px;color:var(--tp-text);background:color-mix(in srgb,var(--tp-bg) 55%,transparent);backdrop-filter:blur(10px) saturate(140%);-webkit-backdrop-filter:blur(10px) saturate(140%);border:1px solid color-mix(in srgb,var(--tp-text) 10%,transparent)}
+.tp-glance li,.tp-item,.tp-cta-card{background:color-mix(in srgb,var(--tp-card) 50%,transparent);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);border-color:color-mix(in srgb,var(--tp-text) 12%,transparent)}
+.tp-band{background:color-mix(in srgb,var(--tp-band) 70%,transparent)}
+.tp-band-head{top:110px}
+.tp-btn--ghost{background:color-mix(in srgb,var(--tp-bg) 28%,transparent);border-color:color-mix(in srgb,var(--tp-text) 30%,transparent)}
+.tp-btn--ghost:hover,.tp-btn--primary:hover{background:var(--tp-orange);color:var(--tp-on-accent);border-color:var(--tp-orange)}
+@media (min-width:761px) and (max-width:1080px){.tp-hero{padding-top:420px}.page-bg img{left:calc((100% - 1873px) * .62)}.page-bg::after{background:linear-gradient(0deg,var(--tp-bg) 0%,rgba(10,14,24,0) 30%)}}
+@media (max-width:760px){.page-bg{height:calc(100vw * 1.389)}.tp-hero{padding-top:calc(100vw * .98)}.page-bg img{left:0;width:100%;height:auto;opacity:1}.page-bg::after{background:linear-gradient(0deg,var(--tp-bg) 0%,rgba(10,14,24,0) 32%)}.tp-wrap{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}}
+
+/* ================= contacts (from the reference, glass look) ================= */
+
+.tp{--tc-ok:#4ADE80;--tc-off:#A9B0C2}
+/* channel cards */
+.tc-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:40px 0 0;padding:0;list-style:none}
+.tc-card{position:relative;display:flex;flex-direction:column;gap:14px;height:100%;padding:22px;border-radius:var(--tp-radius);background:var(--tp-card);border:1px solid var(--tp-line);color:inherit;text-decoration:none;transition:transform .25s ease,border-color .25s ease}
+a.tc-card:hover,a.tc-card:focus-visible{transform:translateY(-4px);border-color:color-mix(in srgb,var(--tp-orange) 50%,transparent);outline:none}
+.tc-card--main{background:linear-gradient(150deg,color-mix(in srgb,var(--tp-orange) 22%,var(--tp-card)),var(--tp-card) 70%);border-color:color-mix(in srgb,var(--tp-orange) 40%,transparent)}
+.tc-top{display:flex;align-items:center;gap:14px}
+.tc-top b{display:block;font-weight:800;font-size:18px;line-height:1.3}
+.tc-top small{display:block;color:var(--tp-muted);font-size:14px}
+.tc-val{margin:0;font-weight:800;font-size:20px;letter-spacing:.01em;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.tc-val--sm{font-size:16px;font-weight:700;color:var(--tp-soft);line-height:1.45}
+.tc-foot{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:auto}
+.tc-go{display:inline-flex;align-items:center;gap:6px;color:var(--tp-accent-text);font-weight:800;font-size:14px}
+.tc-go svg{width:16px;height:16px;transition:transform .2s ease}
+a.tc-card:hover .tc-go svg{transform:translateX(3px)}
+.tc-mini{display:inline-flex;align-items:center;gap:6px;min-height:36px;padding:0 14px;border-radius:999px;border:1px solid color-mix(in srgb,var(--tp-text) 18%,transparent);background:color-mix(in srgb,var(--tp-text) 6%,transparent);color:var(--tp-text);font:700 13px var(--tp-sans);text-decoration:none;cursor:pointer}
+.tc-mini:hover{background:color-mix(in srgb,var(--tp-text) 12%,transparent)}
+.tc-mini:focus-visible{outline:2px solid var(--tp-orange);outline-offset:2px}
+.tc-mini svg{width:15px;height:15px}
+.tc-mini.is-done{border-color:color-mix(in srgb,var(--tc-ok) 60%,transparent);color:var(--tc-ok)}
+.tc-status{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:999px;background:color-mix(in srgb,var(--tc-off) 14%,transparent);color:var(--tp-soft);font-weight:700;font-size:13px}
+.tc-status::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--tc-off)}
+.tc-status.is-open{background:color-mix(in srgb,var(--tc-ok) 14%,transparent);color:var(--tc-ok)}
+.tc-status.is-open::before{background:var(--tc-ok);box-shadow:0 0 0 4px color-mix(in srgb,var(--tc-ok) 25%,transparent)}
+.tc-langs{display:flex;flex-wrap:wrap;gap:6px}
+
+/* message builder */
+.tc-builder{flex:2 1 600px;min-width:0;display:flex;flex-direction:column;gap:16px;padding:28px;border-radius:calc(var(--tp-radius) * 1.2);background:var(--tp-card);border:1px solid var(--tp-line)}
+.tc-topics{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;border:0}
+.tc-topic{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 18px;border-radius:999px;border:1px solid color-mix(in srgb,var(--tp-text) 16%,transparent);background:transparent;color:var(--tp-soft);font:700 15px var(--tp-sans);cursor:pointer;transition:background .2s ease,border-color .2s ease}
+.tc-topic svg{width:17px;height:17px}
+.tc-topic:hover{border-color:color-mix(in srgb,var(--tp-orange) 55%,transparent)}
+.tc-topic[aria-pressed=true]{background:var(--tp-orange);border-color:var(--tp-orange);color:var(--tp-on-accent)}
+.tc-topic:focus-visible{outline:2px solid var(--tp-orange);outline-offset:3px}
+.tc-label{font-weight:800;font-size:14px;color:var(--tp-text)}
+.tc-msg{width:100%;min-height:170px;padding:16px 18px;border-radius:calc(var(--tp-radius) * .7);border:1px solid var(--tp-line);background:color-mix(in srgb,var(--tp-bg) 60%,transparent);color:var(--tp-text);font:500 16px/1.6 var(--tp-sans);resize:vertical}
+.tc-msg:focus{outline:2px solid color-mix(in srgb,var(--tp-orange) 70%,transparent);outline-offset:1px}
+.tc-fine{margin:0;color:var(--tp-muted);font-size:14px}
+
+/* road help */
+.tc-sico{flex:none;display:grid;place-items:center;width:44px;height:44px;border-radius:calc(var(--tp-radius) * .6);background:var(--tp-tint);color:var(--tp-orange)}
+.tc-sico svg{width:22px;height:22px}
+.tc-item--alert .tc-sico{background:color-mix(in srgb,#FF4D4D 18%,transparent);color:#FF8A80}
+.tc-sos{margin-top:28px;padding:20px 22px;border-radius:var(--tp-radius);border:1px solid color-mix(in srgb,#FF4D4D 35%,transparent);background:color-mix(in srgb,#FF4D4D 7%,var(--tp-card))}
+.tc-sos .tp-sub{margin-top:0}
+.tc-sos .tp-rows{margin-bottom:0}
+.tc-sos .tp-chip{background:color-mix(in srgb,#FF4D4D 20%,transparent);color:#FFB4AC;font-size:15px}
+
+/* find us */
+.tc-find{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:20px;margin-top:40px}
+.tc-place{display:flex;flex-direction:column;gap:18px;padding:28px;border-radius:calc(var(--tp-radius) * 1.2);background:var(--tp-card);border:1px solid var(--tp-line)}
+.tc-map{position:relative;display:block;aspect-ratio:16/9;max-width:100%;border-radius:calc(var(--tp-radius) * .8);overflow:hidden;background:
+  radial-gradient(circle at 62% 46%,color-mix(in srgb,var(--tp-orange) 35%,transparent) 0 6%,transparent 7%),
+  repeating-linear-gradient(0deg,transparent 0 27px,color-mix(in srgb,var(--tp-text) 6%,transparent) 27px 28px),
+  repeating-linear-gradient(90deg,transparent 0 27px,color-mix(in srgb,var(--tp-text) 6%,transparent) 27px 28px),
+  linear-gradient(160deg,#16314A,#0F1E2E 55%,#13281D);border:1px solid var(--tp-line);text-decoration:none;color:var(--tp-text)}
+.tc-map::after{content:"";position:absolute;left:8%;right:-10%;top:58%;height:10px;background:color-mix(in srgb,var(--tp-text) 14%,transparent);transform:rotate(-8deg);border-radius:6px}
+.tc-pin{position:absolute;left:62%;top:46%;z-index:1;display:grid;place-items:center;width:44px;height:44px;margin:-38px 0 0 -22px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:var(--tp-orange);box-shadow:0 10px 24px rgba(0,0,0,.45)}
+.tc-pin i{width:14px;height:14px;border-radius:50%;background:var(--tp-on-accent)}
+.tc-map-tag{position:absolute;left:14px;bottom:14px;z-index:1;display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;background:rgba(10,14,24,.82);font-weight:800;font-size:13px}
+.tc-map-tag svg{width:14px;height:14px}
+.tc-map:hover .tc-map-tag,.tc-map:focus-visible .tc-map-tag{background:var(--tp-orange);color:var(--tp-on-accent)}
+.tc-map:focus-visible{outline:2px solid var(--tp-orange);outline-offset:3px}
+.tc-addr{margin:0;font-weight:800;font-size:20px;line-height:1.4}
+.tc-side{display:flex;flex-direction:column;gap:20px;min-width:0}
+.tc-side .tp-rows{margin:0}
+.tc-today{color:var(--tp-text);font-weight:800}
+
+@media (max-width:980px){.tc-cards{grid-template-columns:repeat(2,minmax(0,1fr))}.tp-band-head{position:static}.tc-find{grid-template-columns:1fr}}
+@media (max-width:640px){
+  .tp-wrap,.preview-langs{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+  .tp-hero{padding-block:40px 48px}
+  .tp-h1{font-size:calc(var(--tp-h1-size) * .66)}.tp-h2{font-size:calc(var(--tp-h1-size) * .52)}
+  .tc-cards{grid-template-columns:1fr}
+  .tp-band{padding-block:56px}
+  .tp-item summary{padding:16px;gap:12px;font-size:17px}
+  .tp-body{padding:0 18px 20px}
+  .tp-cta{padding-block:56px}
+  .tp-cta-card,.tc-builder,.tc-place{padding:22px 18px}
+  .tp-btn{flex:1}
+  .tp-rows li{flex-wrap:wrap}
+  .tp-chips{justify-content:flex-start}
+}
+@media (prefers-reduced-motion:reduce){.tc-card,.tp-chev,.tc-go svg{transition:none}}
+
+.tc-card,.tc-builder,.tc-place{background:color-mix(in srgb,var(--tp-card) 50%,transparent);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);border-color:color-mix(in srgb,var(--tp-text) 12%,transparent)}
+.tc-card--main{background:linear-gradient(150deg,color-mix(in srgb,var(--tp-orange) 26%,transparent),color-mix(in srgb,var(--tp-card) 50%,transparent) 70%)}
+.tc-sos{background:color-mix(in srgb,#FF4D4D 9%,color-mix(in srgb,var(--tp-card) 60%,transparent))}
+/* contacts: island photo sits on the right on wide screens */
+@media (min-width:1081px){.page-contacts .page-bg img{left:calc(100% - 1873px + 260px)}}
+@media (min-width:761px) and (max-width:1080px){.page-contacts .tp-hero{padding-top:156px}.page-contacts .page-bg img{left:calc((100% - 1873px) * .8)}}
+@media (max-width:760px){.page-contacts .tp-hero{padding-top:calc(100vw * .98)}}
+</style>
+</head>
+<body class="page-contacts">
+<div class="note" data-i18n="note">Claude preview · design draft. Links lead to the current preview site.</div>
+
+<header class="hdr" id="hdr">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="Drive Phangan"><span class="brand-mark"><img src="img/logo-mark.webp" alt=""></span><img class="brand-word" src="img/brand-word-2026.png" alt="Drive Phangan"></a>
+    <nav class="nav" id="nav" aria-label="Main">
+      <a href="index.html" data-i18n="nav_home">Home</a>
+      <a href="scooters.html" data-i18n="nav_scooters">Scooters</a>
+      <a href="cars.html" data-i18n="nav_cars">Cars</a>
+      <a href="guide.html" data-i18n="nav_guide">Island guide</a>
+      <a href="terms.html" data-i18n="nav_how">Rental terms</a>
+      <a href="contacts.html" aria-current="page" data-i18n="nav_contact">Contact</a>
+    </nav>
+    <div class="langs" id="langs">
+      <button type="button" class="lang-toggle" id="lang-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="lang-menu" aria-label="Language"><svg class="lang-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg><span id="lang-cur">EN</span><svg class="lang-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+      <div class="lang-menu" id="lang-menu" hidden>
+        <button type="button" data-lang="en" data-code="EN" aria-pressed="true"><b>EN</b><span>English</span><svg class="lang-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg></button>
+        <button type="button" data-lang="ru" data-code="RU" aria-pressed="false"><b>RU</b><span>Русский</span><svg class="lang-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg></button>
+        <button type="button" data-lang="uk" data-code="UA" aria-pressed="false"><b>UA</b><span>Українська</span><svg class="lang-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg></button>
+      </div>
+    </div>
+    <a class="btn btn--primary" href="contacts.html" data-i18n="talk">Talk to us</a>
+    <button type="button" class="menu-btn" id="menu-btn" aria-controls="mnav" aria-expanded="false" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  </div>
+</header>
+<nav class="mnav" id="mnav" aria-label="Menu" hidden>
+  <a href="index.html" data-i18n="nav_home">Home</a>
+  <a href="scooters.html" data-i18n="nav_scooters">Scooters</a>
+  <a href="cars.html" data-i18n="nav_cars">Cars</a>
+  <a href="guide.html" data-i18n="nav_guide">Island guide</a>
+  <a href="terms.html" data-i18n="nav_how">Rental terms</a>
+  <a href="contacts.html" aria-current="page" data-i18n="nav_contact">Contact</a>
+</nav>
+
+
+<main id="top">
+<div class="page-bg" aria-hidden="true"><picture><source media="(max-width:760px)" srcset="img/hero-island-mobile.webp"><img src="img/hero-island.webp" alt=""></picture></div>
+<div class="tp is-active" data-terms-lang="en" lang="en">
+  <section class="tp-hero"><div class="tp-wrap">
+    <p class="tp-kicker">Contacts</p>
+    <h1 class="tp-h1">We're right here<br><span>on the island</span></h1>
+    <p class="tp-lead">Message us in the app you already use. A real person from our Ban Tai team replies, usually within a few hours.</p>
+    <ul class="tc-cards">
+      <li><a class="tc-card tc-card--main" href="https://t.me/KohPhanganDrive" target="_blank" rel="noopener">
+        <span class="tc-top"><span class="tp-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4z"/></svg></span><span><b>Telegram</b><small>Fastest reply</small></span></span>
+        <p class="tc-val">@KohPhanganDrive</p>
+        <span class="tc-foot"><span class="tc-go">Open chat <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
+      </a></li>
+      <li><a class="tc-card" href="https://wa.me/66971819946" target="_blank" rel="noopener">
+        <span class="tc-top"><span class="tp-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.5A8.4 8.4 0 1 1 21 11.5z"/></svg></span><span><b>WhatsApp</b><small>Messages and photos</small></span></span>
+        <p class="tc-val">+66 97 181 9946</p>
+        <span class="tc-foot"><span class="tc-go">Open chat <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
+      </a></li>
+      <li><div class="tc-card">
+        <span class="tc-top"><span class="tp-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></span><span><b>Call us</b><small>During office hours</small></span></span>
+        <p class="tc-val">+66 97 181 9946</p>
+        <span class="tc-foot"><a class="tc-mini" href="tel:+66971819946">Call</a><button type="button" class="tc-mini" data-copy="+66971819946" data-done="Copied"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copy number</button></span>
+      </div></li>
+      <li><div class="tc-card">
+        <span class="tc-top"><span class="tp-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span><span><b>Office hours</b><small>Koh Phangan time (GMT+7)</small></span></span>
+        <p class="tc-val tc-val--sm">Mon–Sat 10:00–18:00<br>Sunday closed</p>
+        <span class="tc-foot"><span class="tc-status" data-status data-open="Open now · until 18:00" data-today="Closed · opens today at 10:00" data-tomorrow="Closed · opens tomorrow at 10:00" data-monday="Closed · opens Monday at 10:00">Mon–Sat 10:00–18:00</span></span>
+      </div></li>
+      <li><a class="tc-card" href="#find-us-en">
+        <span class="tc-top"><span class="tp-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span><span><b>Our office</b><small>Pick-up is free</small></span></span>
+        <p class="tc-val tc-val--sm">Ban Tai, Koh Phangan</p>
+        <span class="tc-foot"><span class="tc-go">How to find us <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
+      </a></li>
+      <li><div class="tc-card">
+        <span class="tc-top"><span class="tp-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span><span><b>We speak</b><small>Write in your language</small></span></span>
+        <span class="tc-langs"><span class="tp-chip">English</span><span class="tp-chip">Русский</span><span class="tp-chip">Українська</span><span class="tp-chip">ไทย</span></span>
+      </div></li>
+    </ul>
+  </div></section>
+
+  <section class="tp-band"><div class="tp-wrap tp-band-grid">
+    <div class="tp-band-head">
+      <p class="tp-kicker">Write to us</p>
+      <h2 class="tp-h2">Get an answer in one message</h2>
+      <p class="tp-lead">Pick a topic and we'll prepare the message. Fill in the blanks so we don't have to ask back.</p>
+    </div>
+    <div class="tc-builder" data-builder>
+      <div class="tc-topics" role="group" aria-label="Topic">
+        <button type="button" class="tc-topic" aria-pressed="true" data-msg="Hi! I'd like to rent a scooter.&#10;Dates: from … to …&#10;Model: …&#10;Pick-up: your office / delivery to …"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Book a ride</button>
+        <button type="button" class="tc-topic" aria-pressed="false" data-msg="Hi! I'd like to extend my rental.&#10;Name: …&#10;Scooter / plate: …&#10;New return date: …"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2M19 3v4h-4"/></svg>Extend my rental</button>
+        <button type="button" class="tc-topic" aria-pressed="false" data-msg="URGENT · problem on the road&#10;Name: …&#10;Scooter / plate: …&#10;What happened: …&#10;I'm sending my location pin and a photo."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0zM12 9v4M12 17h.01"/></svg>Problem on the road</button>
+        <button type="button" class="tc-topic" aria-pressed="false" data-msg="Hi! My question: …"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3M12 17h.01"/></svg>Something else</button>
+      </div>
+      <label class="tc-label" for="tc-msg-en">Your message</label>
+      <textarea class="tc-msg" id="tc-msg-en" data-msg-box></textarea>
+      <div class="tp-btns">
+        <a class="tp-btn tp-btn--ghost" href="https://wa.me/66971819946" target="_blank" rel="noopener" data-wa><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.5A8.4 8.4 0 1 1 21 11.5z"/></svg>Send in WhatsApp</a>
+        <a class="tp-btn tp-btn--ghost" href="https://t.me/KohPhanganDrive" target="_blank" rel="noopener" data-tg data-done="Copied, paste it in the chat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4z"/></svg>Copy &amp; open Telegram</a>
+      </div>
+      <p class="tc-fine">The message opens in the app and you send it yourself. Sending a message doesn't reserve a vehicle: we confirm every booking personally.</p>
+    </div>
+  </div></section>
+
+  <section class="tp-hero" style="padding-block:88px"><div class="tp-wrap tp-band-grid">
+    <div class="tp-band-head">
+      <p class="tp-kicker">Already riding with us?</p>
+      <h2 class="tp-h2">Help on the road</h2>
+      <p class="tp-lead">Something went wrong? Stay calm, here's what to do. Our number is also on your rental agreement.</p>
+      <!-- TODO: confirm this promise (out-of-hours / Sunday replies to current renters) -->
+      <p class="tp-note" style="margin-top:20px">Current renters: write to us any time, even after hours. Start the message with <b>URGENT</b> and we'll see it first.</p>
+    </div>
+    <div class="tp-list">
+      <details class="tp-item tc-item--alert" open>
+        <summary><span class="tc-sico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0zM12 9v4M12 17h.01"/></svg></span>Accident<span class="tp-chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span></summary>
+        <div class="tp-body">
+          <ol>
+            <li>Get yourself and others <b>out of traffic</b>. If someone is hurt, call <b>1669</b> first.</li>
+            <li>Take <b>photos</b> of the scene, both vehicles and the other party's number plate.</li>
+            <li><b>Message us right away</b> with your location pin. We'll help you talk to the other party and the police.</li>
+            <li><b>Don't sign anything and don't agree to pay</b> anyone before talking to us.</li>
+          </ol>
+        </div>
+      </details>
+      <details class="tp-item">
+        <summary><span class="tc-sico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0 5 5L21 13l-8 8-3-3 6.3-6.3a4 4 0 0 0-5-5L9.7 5.3 12 3l2.7 3.3z"/><path d="M3 21l6-6"/></svg></span>Breakdown<span class="tp-chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span></summary>
+        <div class="tp-body">
+          <ol>
+            <li>Pull over somewhere safe and switch on the hazard lights.</li>
+            <li>Don't keep riding if you hear strange noises or see a warning light.</li>
+            <li>Send us a <b>photo or short video</b>, your <b>location pin</b> and the plate number. We'll tell you what to do or come to you.</li>
+          </ol>
+        </div>
+      </details>
+      <details class="tp-item">
+        <summary><span class="tc-sico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg></span>Flat tyre<span class="tp-chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span></summary>
+        <div class="tp-body">
+          <p>Tyre shops are everywhere on the island: look for a <b>"ปะยาง"</b> sign. Ride slowly to the nearest one; a repair takes about 15 minutes.</p>
+          <ul class="tp-rows"><li><span>Tyre repair, paid by the renter</span><span class="tp-chip">~100–200 ฿</span></li></ul>
+          <p>Can't find one or the tyre is badly damaged? Send us your location.</p>
+        </div>
+      </details>
+      <details class="tp-item">
+        <summary><span class="tc-sico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="18" height="11" rx="2"/><path d="M22 11v3M7 12.5h4"/></svg></span>Scooter won't start<span class="tp-chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span></summary>
+        <div class="tp-body">
+          <ol>
+            <li>Check the kill switch on the right handlebar and squeeze the brake while pressing start.</li>
+            <li>Check the fuel gauge.</li>
+            <li>Still nothing? Write to us with your location and we'll come to help.</li>
+          </ol>
+          <ul class="tp-rows"><li><span>Dead battery from lights left on<small class="tp-hint">Depends on the location</small></span><span class="tp-chip">100–400 ฿</span></li></ul>
+        </div>
+      </details>
+      <div class="tc-sos">
+        <p class="tp-sub">Emergency numbers in Thailand</p>
+        <ul class="tp-rows">
+          <li><span>Ambulance and medical emergency</span><span class="tp-chip">1669</span></li>
+          <li><span>Police</span><span class="tp-chip">191</span></li>
+          <li><span>Tourist police<small class="tp-hint">English-speaking, 24/7</small></span><span class="tp-chip">1155</span></li>
+        </ul>
+      </div>
+    </div>
+  </div></section>
+
+  <section class="tp-band" id="find-us-en"><div class="tp-wrap">
+    <p class="tp-kicker">Find us</p>
+    <h2 class="tp-h2">Our office in Ban Tai</h2>
+    <div class="tc-find">
+      <div class="tc-place">
+        <a class="tc-map" href="https://www.google.com/maps/place/DRIVE+PHANGAN/@9.702293,100.0309125,17z" target="_blank" rel="noopener" aria-label="Open our office in Google Maps"><span class="tc-pin"><i></i></span><span class="tc-map-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>Open in Google Maps</span></a>
+        <p class="tc-addr">30/16 Ban Tai, Koh Phangan,<br>Surat Thani 84280</p>
+        <!-- TODO: landmark, e.g. <p class="tc-fine">Next to …, look for the orange DRIVE sign.</p> -->
+        <div class="tp-btns">
+          <a class="tp-btn tp-btn--ghost" href="https://www.google.com/maps/dir/?api=1&amp;destination=9.702293,100.0309125" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 11 19-9-9 19-2-8-8-2z"/></svg>Get directions</a>
+          <button type="button" class="tp-btn tp-btn--ghost" data-copy="30/16 Ban Tai, Koh Phangan, Surat Thani 84280" data-done="Address copied"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copy address</button>
+        </div>
+      </div>
+      <div class="tc-side">
+        <div>
+          <p class="tp-sub">Opening hours</p>
+          <ul class="tp-rows" data-hours>
+            <li data-days="1-6"><span>Monday – Saturday</span><span class="tp-chip">10:00–18:00</span></li>
+            <li data-days="0"><span>Sunday</span><span class="tp-chip">Closed</span></li>
+          </ul>
+        </div>
+        <div>
+          <p class="tp-sub">Pick-up &amp; delivery</p>
+          <ul class="tp-rows">
+            <li>Our office in Ban Tai<span class="tp-chip tp-chip--free">Free</span></li>
+            <li>Delivery within Ban Tai<span class="tp-chip tp-chip--free">Free</span></li>
+            <li><span>Thong Sala pier</span><span class="tp-chips"><span class="tp-chip">one way · 200 ฿</span><span class="tp-chip">round trip · 300 ฿</span></span></li>
+            <li><span>Around the island<small class="tp-hint">Depends on the distance</small></span><span class="tp-chip">one way · 100–400 ฿</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div></section>
+</div>
+
+<div class="tp" data-terms-lang="ru" lang="ru">
+  <section class="tp-hero"><div class="tp-wrap">
+    <p class="tp-kicker">Контакты</p>
+    <h1 class="tp-h1">Мы рядом,<br><span>прямо на острове</span></h1>
+    <p class="tp-lead">Пишите в мессенджер, которым вы уже пользуетесь. Ответит живой человек из нашей команды на Бантае, обычно в течение нескольких часов.</p>
+    <ul class="tc-cards">
+      <li><a class="tc-card tc-card--main" href="https://t.me/KohPhanganDrive" target="_blank" rel="noopener">
+        <span class="tc-top"><span class="tp-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4z"/></svg></span><span><b>Telegram</b><small>Самый быстрый ответ</small></span></span>
+        <p class="tc-val">@KohPhanganDrive</p>
+        <span class="tc-foot"><span class="tc-go">Открыть чат <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
+      </a></li>
+      <li><a class="tc-card" href="https://wa.me/66971819946" target="_blank" rel="noopener">
+        <span class="tc-top"><span class="tp-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.5A8.4 8.4 0 1 1 21 11.5z"/></svg></span><span><b>WhatsApp</b><small>Сообщения и фото</small></span></span>
+        <p class="tc-val">+66 97 181 9946</p>
+        <span class="tc-foot"><span class="tc-go">Открыть чат <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
+      </a></li>
+      <li><div class="tc-card">
+        <span class="tc-top"><span class="tp-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></span><span><b>Позвонить</b><small>В рабочие часы</small></span></span>
+        <p class="tc-val">+66 97 181 9946</p>
+        <span class="tc-foot"><a class="tc-mini" href="tel:+66971819946">Позвонить</a><button type="button" class="tc-mini" data-copy="+66971819946" data-done="Скопировано"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Скопировать номер</button></span>
+      </div></li>
+      <li><div class="tc-card">
+        <span class="tc-top"><span class="tp-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span><span><b>Часы работы</b><small>Время Пангана (GMT+7)</small></span></span>
+        <p class="tc-val tc-val--sm">Пн–Сб 10:00–18:00<br>Воскресенье — выходной</p>
+        <span class="tc-foot"><span class="tc-status" data-status data-open="Открыто · до 18:00" data-today="Закрыто · откроемся сегодня в 10:00" data-tomorrow="Закрыто · откроемся завтра в 10:00" data-monday="Закрыто · откроемся в понедельник в 10:00">Пн–Сб 10:00–18:00</span></span>
+      </div></li>
+      <li><a class="tc-card" href="#find-us-ru">
+        <span class="tc-top"><span class="tp-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span><span><b>Наш офис</b><small>Выдача бесплатно</small></span></span>
+        <p class="tc-val tc-val--sm">Бантай, Панган</p>
+        <span class="tc-foot"><span class="tc-go">Как нас найти <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
+      </a></li>
+      <li><div class="tc-card">
+        <span class="tc-top"><span class="tp-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span><span><b>Говорим на языках</b><small>Пишите на своём</small></span></span>
+        <span class="tc-langs"><span class="tp-chip">English</span><span class="tp-chip">Русский</span><span class="tp-chip">Українська</span><span class="tp-chip">ไทย</span></span>
+      </div></li>
+    </ul>
+  </div></section>
+
+  <section class="tp-band"><div class="tp-wrap tp-band-grid">
+    <div class="tp-band-head">
+      <p class="tp-kicker">Напишите нам</p>
+      <h2 class="tp-h2">Ответ с первого сообщения</h2>
+      <p class="tp-lead">Выберите тему, и мы подготовим текст. Заполните пропуски, чтобы нам не пришлось переспрашивать.</p>
+    </div>
+    <div class="tc-builder" data-builder>
+      <div class="tc-topics" role="group" aria-label="Тема">
+        <button type="button" class="tc-topic" aria-pressed="true" data-msg="Здравствуйте! Хочу арендовать скутер.&#10;Даты: с … по …&#10;Модель: …&#10;Получение: в офисе / доставка в …"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Забронировать</button>
+        <button type="button" class="tc-topic" aria-pressed="false" data-msg="Здравствуйте! Хочу продлить аренду.&#10;Имя: …&#10;Скутер / номер: …&#10;Новая дата возврата: …"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2M19 3v4h-4"/></svg>Продлить аренду</button>
+        <button type="button" class="tc-topic" aria-pressed="false" data-msg="СРОЧНО · проблема в дороге&#10;Имя: …&#10;Скутер / номер: …&#10;Что случилось: …&#10;Отправляю геометку и фото."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0zM12 9v4M12 17h.01"/></svg>Проблема в дороге</button>
+        <button type="button" class="tc-topic" aria-pressed="false" data-msg="Здравствуйте! Мой вопрос: …"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3M12 17h.01"/></svg>Другой вопрос</button>
+      </div>
+      <label class="tc-label" for="tc-msg-ru">Ваше сообщение</label>
+      <textarea class="tc-msg" id="tc-msg-ru" data-msg-box></textarea>
+      <div class="tp-btns">
+        <a class="tp-btn tp-btn--ghost" href="https://wa.me/66971819946" target="_blank" rel="noopener" data-wa><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.5A8.4 8.4 0 1 1 21 11.5z"/></svg>Отправить в WhatsApp</a>
+        <a class="tp-btn tp-btn--ghost" href="https://t.me/KohPhanganDrive" target="_blank" rel="noopener" data-tg data-done="Скопировано, вставьте в чат"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4z"/></svg>Скопировать и открыть Telegram</a>
+      </div>
+      <p class="tc-fine">Сообщение откроется в мессенджере, отправляете его вы сами. Сообщение не бронирует транспорт: каждую бронь мы подтверждаем лично.</p>
+    </div>
+  </div></section>
+
+  <section class="tp-hero" style="padding-block:88px"><div class="tp-wrap tp-band-grid">
+    <div class="tp-band-head">
+      <p class="tp-kicker">Уже катаетесь с нами?</p>
+      <h2 class="tp-h2">Помощь в дороге</h2>
+      <p class="tp-lead">Что-то пошло не так? Без паники, вот что делать. Наш номер также указан в договоре аренды.</p>
+      <!-- TODO: confirm this promise -->
+      <p class="tp-note" style="margin-top:20px">Если вы сейчас арендуете у нас: пишите в любое время, даже в нерабочие часы. Начните сообщение со слова <b>СРОЧНО</b>, и мы увидим его первым.</p>
+    </div>
+    <div class="tp-list">
+      <details class="tp-item tc-item--alert" open>
+        <summary><span class="tc-sico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0zM12 9v4M12 17h.01"/></svg></span>ДТП<span class="tp-chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span></summary>
+        <div class="tp-body">
+          <ol>
+            <li>Уйдите сами и уведите других <b>с проезжей части</b>. Если есть пострадавшие, сначала звоните <b>1669</b>.</li>
+            <li>Сделайте <b>фото</b> места, обоих транспортных средств и номера второй стороны.</li>
+            <li><b>Сразу напишите нам</b> и пришлите геометку. Поможем в разговоре со второй стороной и полицией.</li>
+            <li><b>Ничего не подписывайте и не соглашайтесь платить</b>, пока не поговорите с нами.</li>
+          </ol>
+        </div>
+      </details>
+      <details class="tp-item">
+        <summary><span class="tc-sico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0 5 5L21 13l-8 8-3-3 6.3-6.3a4 4 0 0 0-5-5L9.7 5.3 12 3l2.7 3.3z"/><path d="M3 21l6-6"/></svg></span>Поломка<span class="tp-chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span></summary>
+        <div class="tp-body">
+          <ol>
+            <li>Остановитесь в безопасном месте и включите аварийку.</li>
+            <li>Не продолжайте ехать, если слышите странный звук или горит индикатор неисправности.</li>
+            <li>Пришлите нам <b>фото или короткое видео</b>, <b>геометку</b> и номер скутера. Подскажем, что делать, или приедем.</li>
+          </ol>
+        </div>
+      </details>
+      <details class="tp-item">
+        <summary><span class="tc-sico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg></span>Пробито колесо<span class="tp-chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span></summary>
+        <div class="tp-body">
+          <p>Шиномонтажки на острове на каждом шагу: ищите вывеску <b>«ปะยาง»</b>. Медленно доедьте до ближайшей, ремонт занимает около 15 минут.</p>
+          <ul class="tp-rows"><li><span>Ремонт колеса, оплачивает арендатор</span><span class="tp-chip">~100–200 ฿</span></li></ul>
+          <p>Не нашли мастерскую или шина сильно повреждена? Пришлите нам геометку.</p>
+        </div>
+      </details>
+      <details class="tp-item">
+        <summary><span class="tc-sico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="18" height="11" rx="2"/><path d="M22 11v3M7 12.5h4"/></svg></span>Скутер не заводится<span class="tp-chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span></summary>
+        <div class="tp-body">
+          <ol>
+            <li>Проверьте выключатель двигателя на правой ручке и зажмите тормоз, когда нажимаете «старт».</li>
+            <li>Проверьте уровень топлива.</li>
+            <li>Не помогло? Напишите нам с геометкой, приедем на помощь.</li>
+          </ol>
+          <ul class="tp-rows"><li><span>Сел аккумулятор из-за включённых фар<small class="tp-hint">Зависит от локации</small></span><span class="tp-chip">100–400 ฿</span></li></ul>
+        </div>
+      </details>
+      <div class="tc-sos">
+        <p class="tp-sub">Экстренные номера в Таиланде</p>
+        <ul class="tp-rows">
+          <li><span>Скорая помощь</span><span class="tp-chip">1669</span></li>
+          <li><span>Полиция</span><span class="tp-chip">191</span></li>
+          <li><span>Туристическая полиция<small class="tp-hint">Говорят по-английски, круглосуточно</small></span><span class="tp-chip">1155</span></li>
+        </ul>
+      </div>
+    </div>
+  </div></section>
+
+  <section class="tp-band" id="find-us-ru"><div class="tp-wrap">
+    <p class="tp-kicker">Как нас найти</p>
+    <h2 class="tp-h2">Наш офис на Бантае</h2>
+    <div class="tc-find">
+      <div class="tc-place">
+        <a class="tc-map" href="https://www.google.com/maps/place/DRIVE+PHANGAN/@9.702293,100.0309125,17z" target="_blank" rel="noopener" aria-label="Открыть наш офис в Google Картах"><span class="tc-pin"><i></i></span><span class="tc-map-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>Открыть в Google Картах</span></a>
+        <p class="tc-addr">30/16 Ban Tai, Koh Phangan,<br>Surat Thani 84280</p>
+        <div class="tp-btns">
+          <a class="tp-btn tp-btn--ghost" href="https://www.google.com/maps/dir/?api=1&amp;destination=9.702293,100.0309125" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 11 19-9-9 19-2-8-8-2z"/></svg>Проложить маршрут</a>
+          <button type="button" class="tp-btn tp-btn--ghost" data-copy="30/16 Ban Tai, Koh Phangan, Surat Thani 84280" data-done="Адрес скопирован"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Скопировать адрес</button>
+        </div>
+      </div>
+      <div class="tc-side">
+        <div>
+          <p class="tp-sub">Часы работы</p>
+          <ul class="tp-rows" data-hours>
+            <li data-days="1-6"><span>Понедельник – суббота</span><span class="tp-chip">10:00–18:00</span></li>
+            <li data-days="0"><span>Воскресенье</span><span class="tp-chip">Выходной</span></li>
+          </ul>
+        </div>
+        <div>
+          <p class="tp-sub">Получение и доставка</p>
+          <ul class="tp-rows">
+            <li>Наш офис на Бантае<span class="tp-chip tp-chip--free">Бесплатно</span></li>
+            <li>Доставка по Бантаю<span class="tp-chip tp-chip--free">Бесплатно</span></li>
+            <li><span>Пирс Тонгсала</span><span class="tp-chips"><span class="tp-chip">в одну сторону · 200 ฿</span><span class="tp-chip">в обе стороны · 300 ฿</span></span></li>
+            <li><span>По острову<small class="tp-hint">Зависит от расстояния</small></span><span class="tp-chip">в одну сторону · 100–400 ฿</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div></section>
+</div>
+
+<div class="tp" data-terms-lang="uk" lang="uk">
+  <section class="tp-hero"><div class="tp-wrap">
+    <p class="tp-kicker">Контакти</p>
+    <h1 class="tp-h1">Ми поруч,<br><span>просто на острові</span></h1>
+    <p class="tp-lead">Пишіть у месенджер, яким ви вже користуєтеся. Відповість жива людина з нашої команди на Бантаї, зазвичай протягом кількох годин.</p>
+    <ul class="tc-cards">
+      <li><a class="tc-card tc-card--main" href="https://t.me/KohPhanganDrive" target="_blank" rel="noopener">
+        <span class="tc-top"><span class="tp-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4z"/></svg></span><span><b>Telegram</b><small>Найшвидша відповідь</small></span></span>
+        <p class="tc-val">@KohPhanganDrive</p>
+        <span class="tc-foot"><span class="tc-go">Відкрити чат <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
+      </a></li>
+      <li><a class="tc-card" href="https://wa.me/66971819946" target="_blank" rel="noopener">
+        <span class="tc-top"><span class="tp-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.5A8.4 8.4 0 1 1 21 11.5z"/></svg></span><span><b>WhatsApp</b><small>Повідомлення та фото</small></span></span>
+        <p class="tc-val">+66 97 181 9946</p>
+        <span class="tc-foot"><span class="tc-go">Відкрити чат <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
+      </a></li>
+      <li><div class="tc-card">
+        <span class="tc-top"><span class="tp-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></span><span><b>Зателефонувати</b><small>У робочі години</small></span></span>
+        <p class="tc-val">+66 97 181 9946</p>
+        <span class="tc-foot"><a class="tc-mini" href="tel:+66971819946">Зателефонувати</a><button type="button" class="tc-mini" data-copy="+66971819946" data-done="Скопійовано"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Скопіювати номер</button></span>
+      </div></li>
+      <li><div class="tc-card">
+        <span class="tc-top"><span class="tp-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span><span><b>Години роботи</b><small>Час Пангану (GMT+7)</small></span></span>
+        <p class="tc-val tc-val--sm">Пн–Сб 10:00–18:00<br>Неділя — вихідний</p>
+        <span class="tc-foot"><span class="tc-status" data-status data-open="Відкрито · до 18:00" data-today="Зачинено · відкриємося сьогодні о 10:00" data-tomorrow="Зачинено · відкриємося завтра о 10:00" data-monday="Зачинено · відкриємося в понеділок о 10:00">Пн–Сб 10:00–18:00</span></span>
+      </div></li>
+      <li><a class="tc-card" href="#find-us-uk">
+        <span class="tc-top"><span class="tp-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span><span><b>Наш офіс</b><small>Видача безкоштовна</small></span></span>
+        <p class="tc-val tc-val--sm">Бантай, Панган</p>
+        <span class="tc-foot"><span class="tc-go">Як нас знайти <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
+      </a></li>
+      <li><div class="tc-card">
+        <span class="tc-top"><span class="tp-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span><span><b>Говоримо мовами</b><small>Пишіть своєю</small></span></span>
+        <span class="tc-langs"><span class="tp-chip">English</span><span class="tp-chip">Русский</span><span class="tp-chip">Українська</span><span class="tp-chip">ไทย</span></span>
+      </div></li>
+    </ul>
+  </div></section>
+
+  <section class="tp-band"><div class="tp-wrap tp-band-grid">
+    <div class="tp-band-head">
+      <p class="tp-kicker">Напишіть нам</p>
+      <h2 class="tp-h2">Відповідь з першого повідомлення</h2>
+      <p class="tp-lead">Оберіть тему, і ми підготуємо текст. Заповніть пропуски, щоб нам не довелося перепитувати.</p>
+    </div>
+    <div class="tc-builder" data-builder>
+      <div class="tc-topics" role="group" aria-label="Тема">
+        <button type="button" class="tc-topic" aria-pressed="true" data-msg="Вітаю! Хочу орендувати скутер.&#10;Дати: з … по …&#10;Модель: …&#10;Отримання: в офісі / доставка в …"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Забронювати</button>
+        <button type="button" class="tc-topic" aria-pressed="false" data-msg="Вітаю! Хочу продовжити оренду.&#10;Ім'я: …&#10;Скутер / номер: …&#10;Нова дата повернення: …"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2M19 3v4h-4"/></svg>Продовжити оренду</button>
+        <button type="button" class="tc-topic" aria-pressed="false" data-msg="ТЕРМІНОВО · проблема в дорозі&#10;Ім'я: …&#10;Скутер / номер: …&#10;Що сталося: …&#10;Надсилаю геомітку та фото."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0zM12 9v4M12 17h.01"/></svg>Проблема в дорозі</button>
+        <button type="button" class="tc-topic" aria-pressed="false" data-msg="Вітаю! Моє питання: …"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3M12 17h.01"/></svg>Інше питання</button>
+      </div>
+      <label class="tc-label" for="tc-msg-uk">Ваше повідомлення</label>
+      <textarea class="tc-msg" id="tc-msg-uk" data-msg-box></textarea>
+      <div class="tp-btns">
+        <a class="tp-btn tp-btn--ghost" href="https://wa.me/66971819946" target="_blank" rel="noopener" data-wa><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.5A8.4 8.4 0 1 1 21 11.5z"/></svg>Надіслати у WhatsApp</a>
+        <a class="tp-btn tp-btn--ghost" href="https://t.me/KohPhanganDrive" target="_blank" rel="noopener" data-tg data-done="Скопійовано, вставте в чат"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4z"/></svg>Скопіювати й відкрити Telegram</a>
+      </div>
+      <p class="tc-fine">Повідомлення відкриється в месенджері, надсилаєте його ви самі. Повідомлення не бронює транспорт: кожне бронювання ми підтверджуємо особисто.</p>
+    </div>
+  </div></section>
+
+  <section class="tp-hero" style="padding-block:88px"><div class="tp-wrap tp-band-grid">
+    <div class="tp-band-head">
+      <p class="tp-kicker">Вже катаєтеся з нами?</p>
+      <h2 class="tp-h2">Допомога в дорозі</h2>
+      <p class="tp-lead">Щось пішло не так? Без паніки, ось що робити. Наш номер також вказано в договорі оренди.</p>
+      <!-- TODO: confirm this promise -->
+      <p class="tp-note" style="margin-top:20px">Якщо ви зараз орендуєте в нас: пишіть будь-коли, навіть у неробочі години. Почніть повідомлення зі слова <b>ТЕРМІНОВО</b>, і ми побачимо його першим.</p>
+    </div>
+    <div class="tp-list">
+      <details class="tp-item tc-item--alert" open>
+        <summary><span class="tc-sico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0zM12 9v4M12 17h.01"/></svg></span>ДТП<span class="tp-chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span></summary>
+        <div class="tp-body">
+          <ol>
+            <li>Відійдіть самі й відведіть інших <b>з проїжджої частини</b>. Якщо є постраждалі, спершу телефонуйте <b>1669</b>.</li>
+            <li>Зробіть <b>фото</b> місця, обох транспортних засобів і номера другої сторони.</li>
+            <li><b>Одразу напишіть нам</b> і надішліть геомітку. Допоможемо в розмові з другою стороною та поліцією.</li>
+            <li><b>Нічого не підписуйте й не погоджуйтеся платити</b>, доки не поговорите з нами.</li>
+          </ol>
+        </div>
+      </details>
+      <details class="tp-item">
+        <summary><span class="tc-sico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0 5 5L21 13l-8 8-3-3 6.3-6.3a4 4 0 0 0-5-5L9.7 5.3 12 3l2.7 3.3z"/><path d="M3 21l6-6"/></svg></span>Поломка<span class="tp-chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span></summary>
+        <div class="tp-body">
+          <ol>
+            <li>Зупиніться в безпечному місці й увімкніть аварійку.</li>
+            <li>Не продовжуйте їхати, якщо чуєте дивний звук або світиться індикатор несправності.</li>
+            <li>Надішліть нам <b>фото або коротке відео</b>, <b>геомітку</b> й номер скутера. Підкажемо, що робити, або приїдемо.</li>
+          </ol>
+        </div>
+      </details>
+      <details class="tp-item">
+        <summary><span class="tc-sico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg></span>Пробите колесо<span class="tp-chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span></summary>
+        <div class="tp-body">
+          <p>Шиномонтажі на острові на кожному кроці: шукайте вивіску <b>«ปะยาง»</b>. Повільно доїдьте до найближчого, ремонт триває близько 15 хвилин.</p>
+          <ul class="tp-rows"><li><span>Ремонт колеса, оплачує орендар</span><span class="tp-chip">~100–200 ฿</span></li></ul>
+          <p>Не знайшли майстерню або шина сильно пошкоджена? Надішліть нам геомітку.</p>
+        </div>
+      </details>
+      <details class="tp-item">
+        <summary><span class="tc-sico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="18" height="11" rx="2"/><path d="M22 11v3M7 12.5h4"/></svg></span>Скутер не заводиться<span class="tp-chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span></summary>
+        <div class="tp-body">
+          <ol>
+            <li>Перевірте вимикач двигуна на правій ручці та затисніть гальмо, коли натискаєте «старт».</li>
+            <li>Перевірте рівень пального.</li>
+            <li>Не допомогло? Напишіть нам із геоміткою, приїдемо на допомогу.</li>
+          </ol>
+          <ul class="tp-rows"><li><span>Сів акумулятор через увімкнені фари<small class="tp-hint">Залежить від локації</small></span><span class="tp-chip">100–400 ฿</span></li></ul>
+        </div>
+      </details>
+      <div class="tc-sos">
+        <p class="tp-sub">Екстрені номери в Таїланді</p>
+        <ul class="tp-rows">
+          <li><span>Швидка допомога</span><span class="tp-chip">1669</span></li>
+          <li><span>Поліція</span><span class="tp-chip">191</span></li>
+          <li><span>Туристична поліція<small class="tp-hint">Говорять англійською, цілодобово</small></span><span class="tp-chip">1155</span></li>
+        </ul>
+      </div>
+    </div>
+  </div></section>
+
+  <section class="tp-band" id="find-us-uk"><div class="tp-wrap">
+    <p class="tp-kicker">Як нас знайти</p>
+    <h2 class="tp-h2">Наш офіс на Бантаї</h2>
+    <div class="tc-find">
+      <div class="tc-place">
+        <a class="tc-map" href="https://www.google.com/maps/place/DRIVE+PHANGAN/@9.702293,100.0309125,17z" target="_blank" rel="noopener" aria-label="Відкрити наш офіс у Google Картах"><span class="tc-pin"><i></i></span><span class="tc-map-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>Відкрити в Google Картах</span></a>
+        <p class="tc-addr">30/16 Ban Tai, Koh Phangan,<br>Surat Thani 84280</p>
+        <div class="tp-btns">
+          <a class="tp-btn tp-btn--ghost" href="https://www.google.com/maps/dir/?api=1&amp;destination=9.702293,100.0309125" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 11 19-9-9 19-2-8-8-2z"/></svg>Прокласти маршрут</a>
+          <button type="button" class="tp-btn tp-btn--ghost" data-copy="30/16 Ban Tai, Koh Phangan, Surat Thani 84280" data-done="Адресу скопійовано"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Скопіювати адресу</button>
+        </div>
+      </div>
+      <div class="tc-side">
+        <div>
+          <p class="tp-sub">Години роботи</p>
+          <ul class="tp-rows" data-hours>
+            <li data-days="1-6"><span>Понеділок – субота</span><span class="tp-chip">10:00–18:00</span></li>
+            <li data-days="0"><span>Неділя</span><span class="tp-chip">Вихідний</span></li>
+          </ul>
+        </div>
+        <div>
+          <p class="tp-sub">Отримання та доставка</p>
+          <ul class="tp-rows">
+            <li>Наш офіс на Бантаї<span class="tp-chip tp-chip--free">Безкоштовно</span></li>
+            <li>Доставка по Бантаю<span class="tp-chip tp-chip--free">Безкоштовно</span></li>
+            <li><span>Пірс Тонгсала</span><span class="tp-chips"><span class="tp-chip">в один бік · 200 ฿</span><span class="tp-chip">в обидва боки · 300 ฿</span></span></li>
+            <li><span>По острову<small class="tp-hint">Залежить від відстані</small></span><span class="tp-chip">в один бік · 100–400 ฿</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div></section>
+</div>
+</main>
+<footer class="ftr" id="contact">
+  <picture><source media="(max-width:760px)" srcset="img/footer-road-mobile.webp"><img class="ftr-bg" src="img/footer-road.webp" alt="" loading="lazy"></picture>
+  <div class="wrap">
+  <div class="ftr-cta">
+      <div class="cta-text">
+        <p class="kicker" data-i18n="cta_k">Ready to explore?</p>
+        <h2 class="h2"><span data-i18n="cta_h1" style="color:var(--tp-text)">Let's get you</span><br><span data-i18n="cta_h2">on the road</span></h2>
+        <div class="btns cta-btns">
+          <a class="btn btn--glass" href="cars.html"><span data-i18n="cta_cars">Explore cars</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn btn--glass" href="scooters.html"><span data-i18n="cta_scooters">Explore scooters</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+  </div>
+  </div>
+  <div class="ftr-bar"><div class="wrap">
+  <div class="ftr-grid">
+    <a class="brand" href="index.html" aria-label="Drive Phangan"><span class="brand-mark"><img src="img/logo-mark.webp" alt=""></span><img class="brand-word" src="img/brand-word-2026.png" alt="Drive Phangan"></a>
+    <nav aria-label="Footer">
+      <a href="index.html" data-i18n="nav_home">Home</a>
+      <a href="scooters.html" data-i18n="nav_scooters">Scooters</a>
+      <a href="cars.html" data-i18n="nav_cars">Cars</a>
+      <a href="guide.html" data-i18n="nav_guide">Island guide</a>
+      <a href="terms.html" data-i18n="nav_how">Rental terms</a>
+      <a href="contacts.html" aria-current="page" data-i18n="nav_contact">Contact</a>
+    </nav>
+    <address>30/16, Tambon Ban Tai, Koh Phangan, Surat Thani 84280</address>
+  </div>
+  <div class="ftr-bottom">
+    <span>© 2026 Drive Phangan</span>
+  </div>
+</div></div></footer>
+<script>
+const T={
+en:{},
+ru:{rv_sample:"Пример · заменить реальным отзывом",rv_text:"Здесь будет текст реального отзыва из Google Maps: что гость арендовал и как прошла поездка.",rv_date:"Дата отзыва",rv_name:"Имя гостя",rv_sub:"Более 150 отзывов путешественников в Google Maps",st_k:"Кратко о нас",ab_k:"О нас",ab_h:"— аренда скутеров и автомобилей на Ко Пангане",ab_p1:"С 2019 года DRIVE PHANGAN помогает гостям острова свободно передвигаться и предлагает надёжную аренду скутеров и автомобилей.",ab_p2:"В нашем парке есть почти все популярные модели: Honda Scoopy, Click, PCX и ADV, Yamaha Grand Filano, Aerox и NMAX. Мы регулярно обновляем парк и следим за состоянием техники, чтобы каждая поездка была комфортной и безопасной.",ab_c1b:"Понятные условия аренды",ab_c1:"— прозрачные цены и никаких скрытых платежей.",ab_c2b:"Более 150 отзывов",ab_c2:"— нам доверяют путешественники и постоянные клиенты.",ab_c3b:"Поддержка",ab_c3:"— опытная команда готова помочь во время аренды.",st1:"Работаем с 2019 года",st1s:"Местный бизнес с опытом",st2:"Более 150 отзывов",st2s:"Нас рекомендуют на Google Maps",st3:"Ухоженный автопарк",st3s:"Качественная техника и регулярное обслуживание",st4:"Поддержка",st4s:"Опытная команда готова помочь во время аренды",note:"Превью от Claude · черновик дизайна. Ссылки ведут на текущий превью-сайт.",nav_home:"Главная",nav_scooters:"Скутеры",nav_cars:"Авто",nav_guide:"Гид по острову",nav_how:"Условия аренды",nav_contact:"Контакты",talk:"Написать нам",kicker:"Аренда скутеров и авто · Ко Панган",h1a:"Выбор путешественников.",h1b:"Опыт местных.",lead:"Исследуйте остров в своём темпе. Выберите транспорт, пришлите даты — остальное сделает наша команда.",cta_scooters:"Смотреть скутеры",cta_cars:"Смотреть авто",fact1:"Скутеры 110–350cc",fact2:"Бесплатная доставка по Бантаю",fact3:"Ответ в течение нескольких часов",t1:"Ухоженный парк",t1s:"Фото и видео при каждой выдаче",t2:"Нам доверяют",t2s:"Реальные отзывы в Google Maps",t3:"Доставка по острову",t3s:"По Бантаю бесплатно, к пирсу — по запросу",t4:"Местная команда",t4s:"Telegram или WhatsApp, на вашем языке",rides_k:"Выберите транспорт",rides_h:"Найдите свой транспорт",rides_l:"Выберите машину или скутер.",sc_h:"Скутеры",sc_p:"От лёгких городских до макси-скутеров для поездок по острову",sc_1:"Небольшие скутеры",sc_2:"Комфортные скутеры",sc_3:"Макси-скутеры",car_h:"Авто",car_p:"Для семьи, дождливых дней и поездок в своём темпе",car_1:"Выдача на Бантае",car_1c:"Бесплатно",car_2:"Минимальный срок",car_2c:"5 дней",car_3:"Депозит",car_3c:"от 400$",how_k:"Как это работает",how_h:"Три шага до дороги",how_l:"Бронируйте минимум за 3 суток. Минимальный срок аренды — 5 дней.",terms_btn:"Условия аренды",s1:"Выберите транспорт",s1s:"Скутеры и авто с реальными фото, объёмом двигателя и годом.",s2:"Пришлите даты",s2s:"Оставьте заявку онлайн или напишите нам. Подтверждаем максимум за 48 часов, обычно — за несколько часов.",s2c:"Предоплата от 1 500 ฿",s3:"Получите на Бантае",s3s:"Возьмите паспорт и права. Вместе снимаем байк на видео и подписываем договор при выдаче.",s3c:"Доставка по Бантаю бесплатно",rev_k:"Реальный опыт",rev_h:"Нам доверяют путешественники",rev_b:"Отзывы путешественников в Google Maps",rev_s:"Узнайте, что говорят о наших скутерах и сервисе, и поделитесь своим опытом.",rev_btn:"Читать все отзывы в Google",cta_k:"Готовы к поездке?",cta_h1:"Пора",cta_h2:"в дорогу",cta_l:"Пришлите даты — подберём транспорт и назовём цену на ваш сезон.",f_terms:"Условия аренды",f_privacy:"Конфиденциальность"},
+uk:{rv_sample:"Приклад · замінити справжнім відгуком",rv_text:"Тут буде текст справжнього відгуку з Google Maps: що гість орендував і як минула поїздка.",rv_date:"Дата відгуку",rv_name:"Ім'я гостя",rv_sub:"Понад 150 відгуків мандрівників у Google Maps",st_k:"Коротко про нас",ab_k:"Про нас",ab_h:"— оренда скутерів та автомобілів на Ко Пангані",ab_p1:"З 2019 року DRIVE PHANGAN допомагає гостям острова вільно пересуватися й пропонує надійну оренду скутерів та автомобілів.",ab_p2:"У нашому парку є майже всі популярні моделі: Honda Scoopy, Click, PCX і ADV, Yamaha Grand Filano, Aerox і NMAX. Ми регулярно оновлюємо парк і стежимо за станом техніки, щоб кожна поїздка була комфортною та безпечною.",ab_c1b:"Зрозумілі умови оренди",ab_c1:"— прозорі ціни й жодних прихованих платежів.",ab_c2b:"Понад 150 відгуків",ab_c2:"— нам довіряють мандрівники та постійні клієнти.",ab_c3b:"Підтримка",ab_c3:"— досвідчена команда готова допомогти під час оренди.",st1:"Працюємо з 2019 року",st1s:"Місцевий бізнес із досвідом",st2:"Понад 150 відгуків",st2s:"Нас рекомендують у Google Maps",st3:"Доглянутий автопарк",st3s:"Якісна техніка та регулярне обслуговування",st4:"Підтримка",st4s:"Досвідчена команда готова допомогти під час оренди",note:"Превʼю від Claude · чернетка дизайну. Посилання ведуть на поточний превʼю-сайт.",nav_home:"Головна",nav_scooters:"Скутери",nav_cars:"Авто",nav_guide:"Гід островом",nav_how:"Умови оренди",nav_contact:"Контакти",talk:"Написати нам",kicker:"Оренда скутерів та авто · Ко Панган",h1a:"Вибір мандрівників.",h1b:"Досвід місцевих.",lead:"Досліджуйте острів у своєму темпі. Оберіть транспорт, надішліть дати — решту зробить наша команда.",cta_scooters:"Дивитися скутери",cta_cars:"Дивитися авто",fact1:"Скутери 110–350cc",fact2:"Безкоштовна доставка по Бантаю",fact3:"Відповідь протягом кількох годин",t1:"Доглянутий парк",t1s:"Фото й відео під час кожної видачі",t2:"Нам довіряють",t2s:"Справжні відгуки в Google Maps",t3:"Доставка островом",t3s:"По Бантаю безкоштовно, до пірсу — на запит",t4:"Місцева команда",t4s:"Telegram або WhatsApp, вашою мовою",rides_k:"Оберіть транспорт",rides_h:"Знайдіть свій транспорт",rides_l:"Оберіть машину чи скутер.",sc_h:"Скутери",sc_p:"Від легких міських до максі-скутерів для поїздок островом",sc_1:"Невеликі скутери",sc_2:"Комфортні скутери",sc_3:"Максі-скутери",car_h:"Авто",car_p:"Для родини, дощових днів і поїздок у своєму темпі",car_1:"Видача на Бантаї",car_1c:"Безкоштовно",car_2:"Мінімальний термін",car_2c:"5 днів",car_3:"Депозит",car_3c:"від 400$",how_k:"Як це працює",how_h:"Три кроки до дороги",how_l:"Бронюйте щонайменше за 3 доби. Мінімальний термін оренди — 5 днів.",terms_btn:"Умови оренди",s1:"Оберіть транспорт",s1s:"Скутери та авто зі справжніми фото, обʼємом двигуна та роком.",s2:"Надішліть дати",s2s:"Залиште заявку онлайн або напишіть нам. Підтверджуємо максимум за 48 годин, зазвичай — за кілька годин.",s2c:"Передоплата від 1 500 ฿",s3:"Отримайте на Бантаї",s3s:"Візьміть паспорт і права. Разом знімаємо байк на відео й підписуємо договір під час видачі.",s3c:"Доставка по Бантаю безкоштовна",rev_k:"Справжній досвід",rev_h:"Нам довіряють мандрівники",rev_b:"Відгуки мандрівників у Google Maps",rev_s:"Дізнайтеся, що кажуть про наші скутери та сервіс, і поділіться своїм досвідом.",rev_btn:"Читати всі відгуки в Google",cta_k:"Готові до поїздки?",cta_h1:"Час",cta_h2:"у дорогу",cta_l:"Надішліть дати — підберемо транспорт і назвемо ціну на ваш сезон.",f_terms:"Умови оренди",f_privacy:"Конфіденційність"}
+};
+const nodes=[...document.querySelectorAll('[data-i18n]')];
+nodes.forEach(n=>{T.en[n.dataset.i18n]=n.textContent});
+function setLang(l){
+  document.documentElement.lang=l;
+  nodes.forEach(n=>{const v=(T[l]||{})[n.dataset.i18n]??T.en[n.dataset.i18n];if(v!=null)n.textContent=v});
+  document.querySelectorAll('[data-lang]').forEach(b=>{b.setAttribute('aria-pressed',b.dataset.lang===l);if(b.dataset.lang===l)document.getElementById('lang-cur').textContent=b.dataset.code});
+  document.querySelectorAll('[data-terms-lang]').forEach(d=>d.classList.toggle('is-active',d.dataset.termsLang===l));
+  try{localStorage.setItem('dp-lang',l)}catch(e){}
+}
+const langT=document.getElementById('lang-toggle'),langM=document.getElementById('lang-menu');
+function langOpen(o){langM.hidden=!o;langT.setAttribute('aria-expanded',o)}
+langT.addEventListener('click',e=>{e.stopPropagation();langOpen(langM.hidden)});
+document.querySelectorAll('[data-lang]').forEach(b=>b.addEventListener('click',()=>{setLang(b.dataset.lang);langOpen(false);langT.focus()}));
+document.addEventListener('click',e=>{if(!e.target.closest('#langs'))langOpen(false)});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!langM.hidden){langOpen(false);langT.focus()}});
+try{const s=localStorage.getItem('dp-lang');if(s&&T[s])setLang(s)}catch(e){}
+/* footer menu and address: always one line, shrink text to fit */
+function fitFtr(){document.querySelectorAll(".ftr nav,.ftr address").forEach(el=>{el.style.fontSize="";if(window.innerWidth>760)return;let fs=parseFloat(getComputedStyle(el).fontSize);while(el.scrollWidth>el.clientWidth+1&&fs>8){fs-=.5;el.style.fontSize=fs+"px"}})}
+window.addEventListener("resize",fitFtr);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fitFtr);
+document.querySelectorAll("[data-lang]").forEach(b=>b.addEventListener("click",()=>setTimeout(fitFtr)));
+setTimeout(fitFtr);
+const hdr=document.getElementById('hdr'),mb=document.getElementById('menu-btn'),mnav=document.getElementById('mnav');
+function menuOpen(o){if(o)mnav.style.top=(hdr.getBoundingClientRect().bottom+8)+'px';mnav.hidden=!o;mb.setAttribute('aria-expanded',o)}
+mb.addEventListener('click',e=>{e.stopPropagation();menuOpen(mnav.hidden)});
+mnav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>menuOpen(false)));
+document.addEventListener('click',e=>{if(!mnav.hidden&&!e.target.closest('#mnav'))menuOpen(false)});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!mnav.hidden){menuOpen(false);mb.focus()}});
+window.addEventListener('scroll',()=>{if(!mnav.hidden)mnav.style.top=(hdr.getBoundingClientRect().bottom+8)+'px'},{passive:true});
+window.addEventListener('resize',()=>{if(window.innerWidth>1080)menuOpen(false)});
+</script>
+<script>
+/* ===== contact page behaviour (keep on the site) ===== */
+(() => {
+  const WA = 'https://wa.me/66971819946';
+
+  // Open / closed status in Koh Phangan time (UTC+7). Mon–Sat 10:00–18:00, Sunday closed.
+  function phanganNow(){ const d = new Date(Date.now() + 7 * 3600e3); return {day: d.getUTCDay(), min: d.getUTCHours() * 60 + d.getUTCMinutes()}; }
+  function renderStatus(){
+    const {day, min} = phanganNow();
+    const workday = day >= 1 && day <= 6;
+    const open = workday && min >= 600 && min < 1080;
+    let key = 'open';
+    if (!open) key = (workday && min < 600) ? 'today' : (day >= 1 && day <= 5) ? 'tomorrow' : 'monday';
+    document.querySelectorAll('[data-status]').forEach(el => { el.textContent = el.dataset[key]; el.classList.toggle('is-open', open); });
+    document.querySelectorAll('[data-hours] li').forEach(li => {
+      const today = li.dataset.days === '0' ? day === 0 : workday;
+      li.classList.toggle('tc-today', today);
+    });
+  }
+  renderStatus(); setInterval(renderStatus, 60e3);
+
+  // Copy helpers
+  function copy(text){
+    try { return navigator.clipboard.writeText(text).then(() => true, () => false); } catch (e) { return Promise.resolve(false); }
+  }
+  function flash(btn, ok){
+    if (!ok) return;
+    const label = btn.dataset.label || (btn.dataset.label = btn.innerHTML);
+    btn.classList.add('is-done'); btn.textContent = btn.dataset.done;
+    clearTimeout(btn._t); btn._t = setTimeout(() => { btn.innerHTML = label; btn.classList.remove('is-done'); }, 2200);
+  }
+  document.querySelectorAll('[data-copy]').forEach(b => b.addEventListener('click', () => copy(b.dataset.copy).then(ok => flash(b, ok))));
+
+  // Message builder: topic → prefilled text → WhatsApp link / copy for Telegram
+  document.querySelectorAll('[data-builder]').forEach(box => {
+    const area = box.querySelector('[data-msg-box]'), wa = box.querySelector('[data-wa]'), tg = box.querySelector('[data-tg]');
+    const topics = [...box.querySelectorAll('.tc-topic')];
+    const sync = () => { wa.href = WA + '?text=' + encodeURIComponent(area.value.trim()); };
+    const pick = t => { topics.forEach(x => x.setAttribute('aria-pressed', String(x === t))); area.value = t.dataset.msg; sync(); };
+    topics.forEach(t => t.addEventListener('click', () => pick(t)));
+    area.addEventListener('input', sync);
+    tg.addEventListener('click', () => { copy(area.value.trim()).then(ok => flash(tg, ok)); }); // link still opens Telegram
+    pick(topics.find(t => t.getAttribute('aria-pressed') === 'true') || topics[0]);
+  });
+})();
+</script>
+</body>
+</html>

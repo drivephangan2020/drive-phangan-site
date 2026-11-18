@@ -1,0 +1,821 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Rental Terms · Drive Phangan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@400;500;600;700;800&display=swap">
+<style>
+/* Layout: dark island-night site — full-bleed sunset hero, then card bands in the Rental-terms system (same tokens as terms page). */
+:root{
+  --tp-bg:#0A0E18;--tp-band:#0D1220;--tp-card:#121828;
+  --tp-text:#F4F1EA;--tp-soft:#D9DCE6;--tp-muted:#A9B0C2;
+  --tp-orange:#FF7A1A;--tp-orange-hi:#FF9440;--tp-on-accent:#1A0C00;
+  --tp-radius:20px;--tp-h1-size:76px;
+  --tp-line:color-mix(in srgb,var(--tp-text) 8%,transparent);
+  --tp-tint:color-mix(in srgb,var(--tp-orange) 16%,transparent);
+  --tp-accent-text:color-mix(in srgb,var(--tp-orange) 55%,var(--tp-text));
+  --tp-display:Anton,Impact,sans-serif;
+  --tp-sans:Manrope,system-ui,sans-serif;
+  color-scheme:dark;
+}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--tp-bg);color:var(--tp-text);font-family:var(--tp-sans);font-size:16px;line-height:1.6}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--tp-bg)}
+*{box-sizing:border-box}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{max-width:1240px;margin:0 auto;padding-left:max(32px,env(safe-area-inset-left,0px));padding-right:max(32px,env(safe-area-inset-right,0px))}
+.kicker{margin:0;color:var(--tp-orange);font-weight:800;font-size:13px;letter-spacing:.14em;text-transform:uppercase}
+.h1{margin:12px 0 0;font-family:var(--tp-display);font-weight:400;font-size:var(--tp-h1-size);line-height:1.02;text-transform:uppercase;text-wrap:balance}
+.h1 span,.h2 span{color:var(--tp-orange)}
+.h1 span{display:block;white-space:nowrap}
+.h2{margin:10px 0 0;font-family:var(--tp-display);font-weight:400;font-size:calc(var(--tp-h1-size)*.64);line-height:1.04;text-transform:uppercase;text-wrap:balance}
+.lead{margin:16px 0 0;max-width:540px;color:var(--tp-muted);font-size:17px}
+:focus-visible{outline:2px solid var(--tp-orange);outline-offset:3px}
+
+/* buttons */
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:50px;padding:0 26px;border-radius:999px;font:800 15px var(--tp-sans);text-decoration:none;border:0;cursor:pointer;transition:background .2s ease,transform .2s ease}
+.btn svg{width:18px;height:18px;flex:none}
+.btn--primary{background:var(--tp-orange);color:var(--tp-on-accent)}.btn--primary:hover{background:var(--tp-orange-hi)}
+.btn--ghost{background:color-mix(in srgb,var(--tp-text) 6%,transparent);color:var(--tp-text);border:1px solid color-mix(in srgb,var(--tp-text) 18%,transparent)}
+.btn--ghost:hover{background:color-mix(in srgb,var(--tp-text) 12%,transparent)}
+.btn--glass{background:color-mix(in srgb,var(--tp-bg) 28%,transparent);color:var(--tp-text);border:1px solid color-mix(in srgb,var(--tp-text) 30%,transparent);backdrop-filter:blur(10px) saturate(140%);-webkit-backdrop-filter:blur(10px) saturate(140%);transition:background .25s ease,color .25s ease,border-color .25s ease,transform .2s ease}
+.btn--glass:hover,.btn--glass:focus-visible{background:var(--tp-orange);color:var(--tp-on-accent);border-color:var(--tp-orange)}
+.ftr-cta .btn{min-width:200px}
+.cta-btns{display:grid;grid-template-columns:1fr 1fr;width:max-content;max-width:100%;margin-top:28px}
+@media (max-width:760px){.cta-btns{width:100%}.ftr-cta .btn{min-width:0;padding:0 10px;font-size:14px;white-space:nowrap}.ftr-cta .btn svg{display:none}}
+.btn:active{transform:translateY(1px)}
+
+/* preview note */
+.note{background:color-mix(in srgb,var(--tp-orange) 10%,var(--tp-bg));color:var(--tp-accent-text);font-size:13px;font-weight:600;text-align:center;padding-block:8px}
+
+/* header */
+.hdr{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:color-mix(in srgb,var(--tp-bg) 30%,transparent);backdrop-filter:blur(16px) saturate(140%);-webkit-backdrop-filter:blur(16px) saturate(140%);border-bottom:1px solid color-mix(in srgb,var(--tp-text) 12%,transparent)}
+.hdr .wrap{display:flex;align-items:center;gap:24px;min-height:84px}
+.brand{display:flex;align-items:center;gap:8px;text-decoration:none;flex:none}
+.brand-mark{position:relative;display:block;flex:none;width:58px;height:58px;border-radius:50%;overflow:hidden}
+.brand-mark img{position:absolute;max-width:none;width:132%;left:-15.26%;top:-14.53%}
+.brand-word{height:46px;width:auto}
+.nav{display:flex;gap:4px;margin-left:auto}
+.nav a{padding:8px 12px;border-radius:999px;text-decoration:none;color:var(--tp-soft);font-weight:700;font-size:14px;white-space:nowrap}
+.nav a:hover{color:var(--tp-text);background:color-mix(in srgb,var(--tp-text) 7%,transparent)}
+.nav a[aria-current]{color:var(--tp-orange)}
+.langs{position:relative;flex:none}
+.lang-toggle{display:flex;align-items:center;gap:7px;min-height:42px;padding:0 12px 0 13px;border:1px solid color-mix(in srgb,var(--tp-text) 22%,transparent);border-radius:999px;background:color-mix(in srgb,var(--tp-bg) 25%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:var(--tp-text);font:800 13px var(--tp-sans);letter-spacing:.06em;cursor:pointer;transition:border-color .2s ease,background .2s ease}
+.lang-toggle:hover,.lang-toggle[aria-expanded=true]{border-color:var(--tp-orange)}
+.lang-globe{width:17px;height:17px;color:var(--tp-orange)}
+.lang-chev{width:15px;height:15px;transition:transform .25s ease}
+.lang-toggle[aria-expanded=true] .lang-chev{transform:rotate(180deg)}
+.lang-menu{position:absolute;right:0;top:calc(100% + 8px);z-index:60;display:flex;flex-direction:column;gap:2px;min-width:190px;padding:6px;border-radius:16px;background:color-mix(in srgb,var(--tp-card) 85%,transparent);backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);border:1px solid color-mix(in srgb,var(--tp-text) 14%,transparent);box-shadow:0 24px 60px rgba(0,0,0,.45)}
+.lang-menu[hidden]{display:none}
+.lang-menu button{display:flex;align-items:center;gap:12px;width:100%;padding:10px 12px;border:0;border-radius:11px;background:transparent;color:var(--tp-soft);font:600 15px var(--tp-sans);text-align:left;cursor:pointer}
+.lang-menu button:hover,.lang-menu button:focus-visible{background:color-mix(in srgb,var(--tp-text) 8%,transparent);color:var(--tp-text)}
+.lang-menu b{width:26px;font-weight:800;font-size:13px;letter-spacing:.06em;color:var(--tp-muted)}
+.lang-menu span{flex:1}
+.lang-check{width:16px;height:16px;color:var(--tp-orange);visibility:hidden}
+.lang-menu button[aria-pressed=true]{color:var(--tp-text)}
+.lang-menu button[aria-pressed=true] b{color:var(--tp-orange)}
+.lang-menu button[aria-pressed=true] .lang-check{visibility:visible}
+.hdr .btn{min-height:42px;padding:0 18px;font-size:14px}
+.menu-btn{display:none;margin-left:auto;width:44px;height:44px;border-radius:999px;border:1px solid color-mix(in srgb,var(--tp-text) 20%,transparent);background:transparent;color:var(--tp-text);cursor:pointer}
+.menu-btn svg{width:20px;height:20px;margin:auto}
+
+/* phone menu: glass panel under the header */
+.mnav{position:fixed;left:max(16px,env(safe-area-inset-left,0px));right:max(16px,env(safe-area-inset-right,0px));z-index:55;display:flex;flex-direction:column;gap:6px;padding:8px;border-radius:20px;background:color-mix(in srgb,var(--tp-card) 40%,transparent);backdrop-filter:blur(24px) saturate(160%);-webkit-backdrop-filter:blur(24px) saturate(160%);border:1px solid color-mix(in srgb,var(--tp-text) 16%,transparent);box-shadow:0 24px 60px rgba(0,0,0,.45)}
+.mnav[hidden]{display:none}
+.mnav a{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-radius:14px;text-decoration:none;font-weight:700;font-size:16px;color:var(--tp-text);background:color-mix(in srgb,var(--tp-bg) 30%,transparent);border:1px solid color-mix(in srgb,var(--tp-text) 12%,transparent);transition:background .2s ease,border-color .2s ease}
+.mnav a::after{content:"";width:8px;height:8px;border-top:2px solid currentColor;border-right:2px solid currentColor;transform:rotate(45deg);opacity:.5}
+.mnav a:hover{background:color-mix(in srgb,var(--tp-text) 12%,transparent)}
+.mnav a[aria-current]{color:var(--tp-orange);background:color-mix(in srgb,var(--tp-orange) 14%,transparent);border-color:color-mix(in srgb,var(--tp-orange) 50%,transparent)}
+.mnav a[aria-current]::after{opacity:1}
+
+/* hero */
+.hero{position:relative;overflow:hidden;background:var(--tp-bg);margin-top:-84px}
+.hero-img{position:absolute;top:0;right:0;width:72%;height:100%;object-fit:cover;object-position:45% center}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--tp-bg) 28%,rgba(10,14,24,.75) 42%,rgba(10,14,24,0) 62%),linear-gradient(0deg,var(--tp-bg) 0%,rgba(10,14,24,0) 22%)}
+.hero .wrap{position:relative;z-index:1;padding-block:180px 210px}
+.hero .lead{color:var(--tp-soft)}
+.hero .btns{margin-top:32px}
+
+/* about us */
+.about{position:relative;z-index:2;margin-top:-150px}
+.about-card{padding:36px 40px;border-radius:calc(var(--tp-radius)*1.2);background:color-mix(in srgb,var(--tp-card) 40%,transparent);backdrop-filter:blur(16px) saturate(140%);-webkit-backdrop-filter:blur(16px) saturate(140%);border:1px solid color-mix(in srgb,var(--tp-text) 12%,transparent)}
+.about-head{padding-left:18px;border-left:4px solid var(--tp-orange)}
+.about-title{margin:8px 0 0;font-family:var(--tp-display);font-weight:400;font-size:clamp(30px,3.6vw,46px);line-height:1.05;text-transform:uppercase;text-wrap:balance}
+.stats-k{margin:28px 0 0}
+.about-brand{color:var(--tp-orange)}
+.about-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;margin-top:24px}
+.about-text p{margin:0 0 14px;color:var(--tp-soft)}
+.about-text p:last-child{margin:0}
+.checks{display:flex;flex-direction:column;gap:14px;margin:0;padding:0 0 0 40px;list-style:none;border-left:1px solid var(--tp-line);color:var(--tp-soft);font-size:15px;line-height:1.5}
+.checks li{display:flex;gap:12px;align-items:flex-start}
+.checks svg{flex:none;width:20px;height:20px;margin-top:1px;color:var(--tp-orange)}
+.checks b{color:var(--tp-text)}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin:16px 0 0;padding:0;list-style:none}
+.stats li{display:flex;gap:14px;align-items:flex-start;padding:20px;border-radius:var(--tp-radius);background:color-mix(in srgb,var(--tp-card) 55%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid color-mix(in srgb,var(--tp-text) 10%,transparent);transition:transform .25s ease,border-color .25s ease}
+.stats li:hover{transform:translateY(-4px);border-color:color-mix(in srgb,var(--tp-orange) 50%,transparent)}
+.ico{flex:none;display:grid;place-items:center;width:46px;height:46px;border-radius:14px;background:var(--tp-tint);color:var(--tp-orange)}
+.ico svg{width:23px;height:23px}
+.stats b{display:block;font-weight:800;font-size:16px;line-height:1.3}
+.stats div span{display:block;margin-top:4px;color:var(--tp-muted);font-size:14px;line-height:1.45}
+
+/* rides */
+.section{padding-block:96px}
+.rides-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:40px}
+.ride{display:flex;flex-direction:column;border-radius:calc(var(--tp-radius)*1.2);background:var(--tp-card);border:1px solid var(--tp-line);overflow:hidden;transition:border-color .25s ease,transform .25s ease}
+.ride:hover{border-color:color-mix(in srgb,var(--tp-orange) 50%,transparent);transform:translateY(-4px)}
+.ride-media{aspect-ratio:1000/325;max-width:100%;background:#000;overflow:hidden}
+.ride-media img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+.ride:hover .ride-media img{transform:scale(1.04)}
+.ride-body{display:flex;flex-direction:column;gap:14px;padding:26px 28px 28px;flex:1}
+.ride h3{margin:0;font-family:var(--tp-display);font-weight:400;font-size:36px;line-height:1;text-transform:uppercase}
+.ride p{margin:0;color:var(--tp-muted)}
+.rows{margin:0;padding:0;list-style:none;border-radius:14px;overflow:hidden;border:1px solid var(--tp-line)}
+.rows li{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:11px 16px;background:color-mix(in srgb,var(--tp-bg) 45%,transparent);font-weight:700;font-size:15px}
+.rows li+li{border-top:1px solid var(--tp-line)}
+.chip{flex:none;padding:5px 12px;border-radius:999px;background:color-mix(in srgb,var(--tp-orange) 18%,transparent);color:var(--tp-accent-text);font-weight:700;font-size:13px;white-space:nowrap;font-variant-numeric:tabular-nums}
+.ride .btn{margin-top:auto;align-self:flex-start}
+
+
+/* ride picker: heading on top, circle illustration with its two words around the rim */
+.rides-head{text-align:center}
+.rides-head .lead{margin-inline:auto;max-width:none}
+.rp{position:relative;width:min(900px,calc(100vw - 48px));max-width:none;margin:32px 0 0 50%;translate:-50% 0}
+.rides{overflow-x:clip}
+/* desktop: heading above the circle; the explore buttons sit in the picture under the vehicles */
+@media (min-width:901px){
+  .rides-head .kicker{font-size:16px;letter-spacing:.16em}
+  .rides-head .rides-btns{display:none}
+  .rides-head .lead{margin-top:10px}
+}
+@media (max-width:900px){.rp-tag{display:none}}
+.rides-btns{justify-content:center;margin-top:24px}
+.rides-btns .btn{transition:background .25s ease,color .25s ease,border-color .25s ease,transform .2s ease}
+.rp-svg{display:block;width:100%;height:auto;overflow:visible;-webkit-user-select:none;user-select:none}
+.rp-dim,.rp-hi{opacity:0;pointer-events:none;transition:opacity .35s ease}
+.rp-hot,.rp-tag{cursor:pointer;outline:none;-webkit-tap-highlight-color:transparent}
+.rp-hot polygon{fill:transparent}
+.rp-tag{position:absolute;transform:translate(-50%,-50%);min-height:48px;padding:0 22px;border-radius:999px;background:color-mix(in srgb,var(--tp-bg) 25%,transparent);border:1px solid color-mix(in srgb,var(--tp-text) 35%,transparent);backdrop-filter:blur(10px) saturate(140%);-webkit-backdrop-filter:blur(10px) saturate(140%);text-shadow:0 1px 2px rgba(0,0,0,.45);color:var(--tp-text);font-weight:800;font-size:15px;white-space:nowrap;text-decoration:none;box-shadow:0 10px 30px rgba(0,0,0,.35);transition:background .25s ease,color .25s ease,transform .25s ease}
+@media (max-width:760px){.rides-btns{flex-wrap:nowrap}.rides-btns .btn{flex:1;padding:0 12px;font-size:14px;white-space:nowrap}.rides-btns .btn svg{display:none}.rp{width:calc(100% + 12px);margin:24px -6px 0;translate:none}.rp-tag{display:none}}
+/* active zone: finger (data-active) or keyboard focus everywhere; mouse hover only on devices that hover */
+.rides:is([data-active="cars"],:has([data-zone="cars"]:focus-visible)) .rp-dim{opacity:1}
+.rides:is([data-active="cars"],:has([data-zone="cars"]:focus-visible)) .rp-hi[data-for="cars"]{opacity:1}
+.rides:is([data-active="cars"],:has([data-zone="cars"]:focus-visible)) .rp-tag[data-tag="cars"]{background:var(--tp-orange);color:var(--tp-on-accent);border-color:var(--tp-orange);transform:translate(-50%,-50%) scale(1.08)}
+.rides:is([data-active="cars"],:has([data-zone="cars"]:focus-visible)) .rides-btns [data-zone="cars"]{background:var(--tp-orange);color:var(--tp-on-accent);border-color:var(--tp-orange)}
+.rides:is([data-active="scooters"],:has([data-zone="scooters"]:focus-visible)) .rp-dim{opacity:1}
+.rides:is([data-active="scooters"],:has([data-zone="scooters"]:focus-visible)) .rp-hi[data-for="scooters"]{opacity:1}
+.rides:is([data-active="scooters"],:has([data-zone="scooters"]:focus-visible)) .rp-tag[data-tag="scooters"]{background:var(--tp-orange);color:var(--tp-on-accent);border-color:var(--tp-orange);transform:translate(-50%,-50%) scale(1.08)}
+.rides:is([data-active="scooters"],:has([data-zone="scooters"]:focus-visible)) .rides-btns [data-zone="scooters"]{background:var(--tp-orange);color:var(--tp-on-accent);border-color:var(--tp-orange)}
+@media (hover:hover){
+.rides:has([data-zone="cars"]:hover) .rp-dim{opacity:1}
+.rides:has([data-zone="cars"]:hover) .rp-hi[data-for="cars"]{opacity:1}
+.rides:has([data-zone="cars"]:hover) .rp-tag[data-tag="cars"]{background:var(--tp-orange);color:var(--tp-on-accent);border-color:var(--tp-orange);transform:translate(-50%,-50%) scale(1.08)}
+.rides:has([data-zone="cars"]:hover) .rides-btns [data-zone="cars"]{background:var(--tp-orange);color:var(--tp-on-accent);border-color:var(--tp-orange)}
+.rides:has([data-zone="scooters"]:hover) .rp-dim{opacity:1}
+.rides:has([data-zone="scooters"]:hover) .rp-hi[data-for="scooters"]{opacity:1}
+.rides:has([data-zone="scooters"]:hover) .rp-tag[data-tag="scooters"]{background:var(--tp-orange);color:var(--tp-on-accent);border-color:var(--tp-orange);transform:translate(-50%,-50%) scale(1.08)}
+.rides:has([data-zone="scooters"]:hover) .rides-btns [data-zone="scooters"]{background:var(--tp-orange);color:var(--tp-on-accent);border-color:var(--tp-orange)}
+}
+
+/* reviews */
+.band{background:var(--tp-band);border-top:1px solid var(--tp-line);border-bottom:1px solid var(--tp-line)}
+.rv-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:20px}
+.rv-sum{display:flex;align-items:center;gap:10px;margin:14px 0 0;color:var(--tp-soft);font-weight:700}
+.rv-g{flex:none;display:grid;place-items:center;width:30px;height:30px;border-radius:9px;background:#fff}
+.rv-g svg{width:18px;height:18px}
+.rv-nav{display:flex;gap:8px}
+.rv-arrow{display:grid;place-items:center;width:46px;height:46px;border-radius:999px;border:1px solid color-mix(in srgb,var(--tp-text) 18%,transparent);background:color-mix(in srgb,var(--tp-text) 6%,transparent);color:var(--tp-text);cursor:pointer;transition:background .2s ease,color .2s ease}
+.rv-arrow:hover{background:var(--tp-orange);color:var(--tp-on-accent);border-color:var(--tp-orange)}
+.rv-arrow svg{width:20px;height:20px}
+.rv-track{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 32px)/3);gap:16px;margin-top:32px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:4px}
+.rv-track::-webkit-scrollbar{display:none}
+.rv-card{scroll-snap-align:start;display:flex;flex-direction:column;gap:12px;min-width:0;padding:22px;border-radius:var(--tp-radius);background:color-mix(in srgb,var(--tp-card) 70%,transparent);border:1px solid var(--tp-line)}
+.rv-card header{display:flex;align-items:center;gap:12px}
+.rv-card header div{flex:1;min-width:0}
+.rv-card header b{display:block;font-weight:800;line-height:1.3}
+.rv-card header span:not(.rv-ava):not(.rv-g){display:block;color:var(--tp-muted);font-size:13px}
+.rv-ava{flex:none;display:grid;place-items:center;width:42px;height:42px;border-radius:999px;background:var(--tp-tint);color:var(--tp-orange);font-weight:800}
+.rv-stars{display:flex;gap:2px;color:var(--tp-orange)}
+.rv-stars svg{width:16px;height:16px}
+.rv-card p{margin:0;color:var(--tp-soft);font-size:15px}
+.rv-card--sample{border-style:dashed}
+.rv-flag{align-self:flex-start;margin-top:auto;padding:4px 10px;border-radius:999px;background:color-mix(in srgb,var(--tp-text) 8%,transparent);color:var(--tp-muted);font-size:12px;font-weight:700}
+.rv-foot{display:flex;justify-content:center;margin-top:32px}
+
+/* footer with the contact call */
+.ftr{position:relative;overflow:hidden;border-top:1px solid var(--tp-line);padding-block:96px 0;color:var(--tp-muted);font-size:14px}
+.ftr-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%}
+.ftr::after{content:"";position:absolute;inset:0;z-index:0;background:linear-gradient(180deg,var(--tp-bg) 0%,color-mix(in srgb,var(--tp-bg) 35%,transparent) 22%,color-mix(in srgb,var(--tp-bg) 10%,transparent) 60%,color-mix(in srgb,var(--tp-bg) 20%,transparent) 100%),linear-gradient(90deg,color-mix(in srgb,var(--tp-bg) 82%,transparent) 0%,color-mix(in srgb,var(--tp-bg) 55%,transparent) 38%,transparent 62%)}
+.cta-text{text-shadow:0 2px 12px rgba(0,0,0,.55)}
+.ftr>.wrap{position:relative;z-index:1}
+.ftr-bar{position:relative;z-index:1;padding-block:28px 24px;background:color-mix(in srgb,var(--tp-bg) 30%,transparent);backdrop-filter:blur(16px) saturate(140%);-webkit-backdrop-filter:blur(16px) saturate(140%);border-top:1px solid color-mix(in srgb,var(--tp-text) 12%,transparent);color:var(--tp-soft)}
+.ftr-bar nav a{color:var(--tp-text)}
+.ftr-cta{position:relative;display:flex;flex-wrap:wrap;align-items:center;gap:24px 40px;padding-bottom:120px}
+.cta-text{flex:1 1 380px;min-width:0}
+.cta-text .lead{color:var(--tp-soft)}
+.ftr-grid{display:flex;flex-wrap:wrap;gap:28px 48px;align-items:flex-start;justify-content:space-between}
+.ftr nav{display:flex;flex-wrap:nowrap;gap:22px;white-space:nowrap}
+.ftr address{white-space:nowrap}
+@media (max-width:760px){.ftr nav{gap:9px;justify-content:space-between;width:100%;font-size:clamp(11px,3.4vw,14px)}.ftr address{font-size:clamp(10px,3.2vw,14px)}}
+.ftr nav a{text-decoration:none;font-weight:700;color:var(--tp-soft)}
+.ftr nav a:hover{color:var(--tp-orange)}
+.ftr address{font-style:normal}
+.ftr-bottom{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;margin-top:20px;padding-top:16px;border-top:1px solid color-mix(in srgb,var(--tp-text) 12%,transparent)}
+.ftr-bottom a{text-decoration:none}.ftr-bottom a:hover{color:var(--tp-text)}
+
+@media (max-width:1080px){
+  .rv-track{grid-auto-columns:calc((100% - 16px)/2)}
+  .nav,.hdr .btn{display:none}
+  .menu-btn{display:grid;margin-left:0;flex:none}
+  .langs{margin-left:auto}
+  .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:760px){
+  :root{--tp-h1-size:52px}
+  .wrap{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+  .brand-word{height:36px}
+  .brand-mark{width:46px;height:46px}
+  .hdr .wrap{gap:12px}
+  .hero-img{position:relative;width:100%;height:calc(50vw + 84px);object-position:center}
+  .hero::after{background:linear-gradient(0deg,var(--tp-bg) 0%,rgba(10,14,24,.0) 30%);height:calc(50vw + 84px)}
+  .hero .wrap{padding-block:8px 96px}
+  .about{margin-top:-64px}
+  .about-card{padding:24px 20px}
+  .about-grid{grid-template-columns:1fr;gap:20px}
+  .checks{padding:20px 0 0;border-left:0;border-top:1px solid var(--tp-line)}
+  .rides-grid{grid-template-columns:1fr}
+  .section{padding-block:64px}
+  .rv-track{grid-auto-columns:85%}
+  .rv-nav{display:none}
+  .ftr{padding-block:64px 0}
+  .ftr-cta{padding-bottom:72px}
+  .ftr-cta .btns{margin-right:0;width:100%}
+  .ftr-cta .btn{flex:1}
+  .ride-body{padding:22px 20px 24px}
+}
+@media (max-width:460px){
+  .stats{gap:10px}
+  .stats li{flex-direction:column;gap:10px;padding:16px}
+  .rows li{flex-wrap:wrap}
+}
+
+/* ================= rental terms (from the reference, restyled in the site's glass look) ================= */
+
+/* Theme tokens — every colour, font and radius on the page comes from these.
+   The design panel edits exactly these variables ("Copy CSS" exports them). */
+.tp{
+  --tp-bg:#0A0E18;--tp-band:#0D1220;--tp-card:#121828;
+  --tp-text:#F4F1EA;--tp-soft:#D9DCE6;--tp-muted:#A9B0C2;
+  --tp-orange:#FF7A1A;--tp-orange-hi:#FF9440;--tp-on-accent:#1A0C00;
+  --tp-font-display:Anton;--tp-display-weight:400;--tp-font-body:Manrope;
+  --tp-radius:20px;--tp-h1-size:72px;
+  /* derived — no need to edit */
+  --tp-line:color-mix(in srgb,var(--tp-text) 8%,transparent);
+  --tp-tint:color-mix(in srgb,var(--tp-orange) 16%,transparent);
+  --tp-accent-text:color-mix(in srgb,var(--tp-orange) 55%,var(--tp-text));
+  --tp-display:var(--tp-font-display),'Noto Sans Thai',Impact,sans-serif;
+  --tp-sans:var(--tp-font-body),'Noto Sans Thai',system-ui,sans-serif;
+  font-family:var(--tp-sans);color:var(--tp-text);background:var(--tp-bg);line-height:1.6}
+.tp *{box-sizing:border-box}
+.tp-wrap{max-width:1240px;margin:0 auto;padding:0 32px}
+.tp-kicker{margin:0;color:var(--tp-orange);font-weight:800;font-size:13px;letter-spacing:.14em;text-transform:uppercase}
+.tp-h1{margin:10px 0 0;font-family:var(--tp-display);font-weight:var(--tp-display-weight);font-size:var(--tp-h1-size);line-height:1.02;text-transform:uppercase;text-wrap:balance}
+.tp-h2{margin:10px 0 0;font-family:var(--tp-display);font-weight:var(--tp-display-weight);font-size:calc(var(--tp-h1-size) * .66);line-height:1.04;text-transform:uppercase;text-wrap:balance}
+.tp-lead{margin:16px 0 0;max-width:560px;color:var(--tp-muted);font-size:17px}
+
+/* hero + glance */
+.tp-hero{padding:64px 0 72px}
+.tp-glance{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:40px 0 0;padding:0;list-style:none}
+.tp-glance li{display:flex;gap:16px;align-items:flex-start;padding:22px;border-radius:var(--tp-radius);background:var(--tp-card);border:1px solid var(--tp-line);transition:transform .25s ease,border-color .25s ease}
+.tp-glance li:hover{transform:translateY(-4px);border-color:color-mix(in srgb,var(--tp-orange) 50%,transparent)}
+.tp-ico{flex:none;display:grid;place-items:center;width:48px;height:48px;border-radius:calc(var(--tp-radius) * .7);background:var(--tp-tint);color:var(--tp-orange)}
+.tp-ico svg{width:24px;height:24px}
+.tp-glance b{display:block;font-weight:800;font-size:18px;line-height:1.3}
+.tp-glance div span{display:block;margin-top:4px;color:var(--tp-muted);font-size:15px;line-height:1.5}
+.tp-glance em{display:block;margin-top:6px;color:var(--tp-accent-text);font-style:normal;font-weight:700;font-size:14px}
+
+/* detailed sections */
+.tp-band{padding:88px 0;background:var(--tp-band);border-top:1px solid var(--tp-line);border-bottom:1px solid var(--tp-line)}
+.tp-band-grid{display:flex;flex-wrap:wrap;gap:48px;align-items:flex-start}
+.tp-band-head{flex:1 1 300px;min-width:0;position:sticky;top:32px}
+.tp-list{flex:2 1 600px;min-width:0;display:flex;flex-direction:column;gap:12px}
+.tp-item{border-radius:var(--tp-radius);background:var(--tp-card);border:1px solid var(--tp-line);transition:border-color .25s ease}
+.tp-item[open],.tp-item:hover{border-color:color-mix(in srgb,var(--tp-orange) 45%,transparent)}
+.tp-item summary{display:flex;align-items:center;gap:18px;padding:22px 24px;cursor:pointer;list-style:none;font-weight:800;font-size:19px;line-height:1.3}
+.tp-item summary::-webkit-details-marker{display:none}
+.tp-item summary:focus-visible{outline:2px solid var(--tp-orange);outline-offset:3px;border-radius:var(--tp-radius)}
+.tp-num{flex:none;width:44px;font-family:var(--tp-display);font-weight:var(--tp-display-weight);font-size:32px;line-height:1;color:var(--tp-orange)}
+.tp-chev{flex:none;margin-left:auto;display:grid;place-items:center;width:36px;height:36px;border-radius:999px;background:color-mix(in srgb,var(--tp-text) 7%,transparent);color:var(--tp-soft);transition:transform .3s cubic-bezier(.2,.8,.2,1),background .25s ease}
+.tp-item[open] .tp-chev{transform:rotate(180deg);background:var(--tp-orange);color:var(--tp-on-accent)}
+.tp-body{padding:0 24px 24px 86px;color:var(--tp-soft)}
+.tp-body p{margin:0 0 12px}
+.tp-body ul{margin:0 0 12px;padding-left:18px}
+.tp-body li{margin-bottom:8px}
+.tp-body li::marker{color:var(--tp-orange)}
+.tp-body b{color:var(--tp-text)}
+.tp-sub{margin:14px 0 8px;font-weight:800;color:var(--tp-text)}
+.tp-actions{margin-top:18px}
+.tp-chips{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:6px}
+.tp-hint{display:block;margin-top:2px;color:var(--tp-muted);font-size:13px}
+.tp-note{margin:4px 0 0;padding:12px 16px;border-radius:calc(var(--tp-radius) * .6);background:color-mix(in srgb,var(--tp-orange) 8%,transparent);color:var(--tp-accent-text);font-size:15px}
+.tp-rows{margin:4px 0 14px;padding:0;list-style:none;border-radius:calc(var(--tp-radius) * .7);overflow:hidden;border:1px solid var(--tp-line)}
+.tp-rows li{display:flex;justify-content:space-between;align-items:center;gap:16px;margin:0;padding:12px 16px;background:color-mix(in srgb,var(--tp-bg) 45%,transparent)}
+.tp-rows li+li{border-top:1px solid var(--tp-line)}
+.tp-chip{flex:none;padding:6px 12px;border-radius:999px;background:color-mix(in srgb,var(--tp-orange) 18%,transparent);color:var(--tp-accent-text);font-weight:700;font-size:13px;white-space:nowrap}
+.tp-chip--free{background:var(--tp-orange);color:var(--tp-on-accent)}
+
+/* contact */
+.tp-cta{padding:96px 0}
+.tp-cta-card{display:flex;flex-wrap:wrap;align-items:center;gap:24px 40px;padding:48px;border-radius:calc(var(--tp-radius) * 1.5);background:var(--tp-card);border:1px solid var(--tp-line);box-shadow:0 40px 100px rgba(0,0,0,.35)}
+.tp-cta-card .tp-h2 span{color:var(--tp-orange)}
+.tp-cta-text{flex:1 1 380px;min-width:0}
+.tp-btns{display:flex;flex-wrap:wrap;gap:12px}
+.tp-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:50px;padding:0 26px;border-radius:999px;font:800 15px var(--tp-sans);text-decoration:none;border:0}
+.tp-btn svg{width:18px;height:18px}
+.tp-btn--primary{background:var(--tp-orange);color:var(--tp-on-accent)}.tp-btn--primary:hover{background:var(--tp-orange-hi);color:var(--tp-on-accent)}
+.tp-btn--ghost{background:color-mix(in srgb,var(--tp-text) 6%,transparent);color:var(--tp-text);border:1px solid color-mix(in srgb,var(--tp-text) 18%,transparent)}.tp-btn--ghost:hover{background:color-mix(in srgb,var(--tp-text) 12%,transparent);color:var(--tp-text)}
+
+@media (max-width:980px){.tp-glance{grid-template-columns:repeat(2,minmax(0,1fr))}.tp-band-head{position:static}}
+@media (max-width:640px){
+  .tp-wrap{padding:0 16px}
+  .tp-hero{padding:40px 0 48px}
+  .tp-h1{font-size:calc(var(--tp-h1-size) * .66)}.tp-h2{font-size:calc(var(--tp-h1-size) * .52)}
+  .tp-glance{grid-template-columns:1fr}
+  .tp-band{padding:56px 0}
+  .tp-item summary{padding:18px;gap:12px;font-size:17px}
+  .tp-num{width:auto;font-size:26px}
+  .tp-body{padding:0 18px 20px}
+  .tp-cta{padding:56px 0}
+  .tp-cta-card{padding:28px 20px}
+  .tp-btn{flex:1}
+  .tp-rows li:has(.tp-chips){flex-wrap:wrap}
+  .tp-chips{justify-content:flex-start}
+}
+/* Thai: the Latin/Cyrillic display faces have no Thai glyphs — Thai headings use Noto Sans Thai, with room for tone marks */
+.tp[lang=th] .tp-h1,.tp[lang=th] .tp-h2{font-family:'Noto Sans Thai',sans-serif;font-weight:800;line-height:1.25}
+
+[hidden]{display:none!important}
+[data-terms-lang]{display:none}[data-terms-lang].is-active{display:block}
+.page-bg{position:absolute;top:0;left:0;right:0;height:724px;z-index:-1;overflow:hidden;pointer-events:none}
+.page-bg img{position:absolute;top:0;height:724px;width:1873px;max-width:none;left:calc((100% - 1873px) * .5)}
+@media (min-width:1874px){.page-bg img{-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}}
+main#top{position:relative;margin-top:-84px}
+.page-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,14,24,.72) 14%,rgba(10,14,24,.35) 40%,rgba(10,14,24,0) 64%),linear-gradient(0deg,var(--tp-bg) 0%,rgba(10,14,24,0) 30%)}
+body{position:relative;isolation:isolate}
+.tp{background:transparent}
+.tp-hero{padding:156px 0 80px}
+.tp-wrap{padding-left:max(32px,env(safe-area-inset-left,0px));padding-right:max(32px,env(safe-area-inset-right,0px))}
+.tp-lead{color:var(--tp-soft)}
+.tp-hero .tp-kicker,.tp-hero .tp-h1{text-shadow:0 2px 12px rgba(0,0,0,.6)}
+.tp-h1 span{color:var(--tp-orange)}
+.tp-hero .tp-lead{display:inline-block;max-width:600px;padding:12px 18px;border-radius:14px;color:var(--tp-text);background:color-mix(in srgb,var(--tp-bg) 55%,transparent);backdrop-filter:blur(10px) saturate(140%);-webkit-backdrop-filter:blur(10px) saturate(140%);border:1px solid color-mix(in srgb,var(--tp-text) 10%,transparent)}
+.tp-glance li,.tp-item,.tp-cta-card{background:color-mix(in srgb,var(--tp-card) 50%,transparent);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);border-color:color-mix(in srgb,var(--tp-text) 12%,transparent)}
+.tp-band{background:color-mix(in srgb,var(--tp-band) 70%,transparent)}
+.tp-band-head{top:110px}
+.tp-btn--ghost{background:color-mix(in srgb,var(--tp-bg) 28%,transparent);border-color:color-mix(in srgb,var(--tp-text) 30%,transparent)}
+.tp-btn--ghost:hover,.tp-btn--primary:hover{background:var(--tp-orange);color:var(--tp-on-accent);border-color:var(--tp-orange)}
+@media (min-width:761px) and (max-width:1080px){.tp-hero{padding-top:420px}.page-bg img{left:calc((100% - 1873px) * .62)}.page-bg::after{background:linear-gradient(0deg,var(--tp-bg) 0%,rgba(10,14,24,0) 30%)}}
+@media (max-width:760px){.page-bg{height:calc(100vw * 1.389)}.tp-hero{padding-top:calc(100vw * .98)}.page-bg img{left:0;width:100%;height:auto;opacity:1}.page-bg::after{background:linear-gradient(0deg,var(--tp-bg) 0%,rgba(10,14,24,0) 32%)}.tp-wrap{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}}
+</style>
+</head>
+<body>
+<div class="note" data-i18n="note">Claude preview · design draft. Links lead to the current preview site.</div>
+
+<header class="hdr" id="hdr">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="Drive Phangan"><span class="brand-mark"><img src="img/logo-mark.webp" alt=""></span><img class="brand-word" src="img/brand-word-2026.png" alt="Drive Phangan"></a>
+    <nav class="nav" id="nav" aria-label="Main">
+      <a href="index.html" data-i18n="nav_home">Home</a>
+      <a href="scooters.html" data-i18n="nav_scooters">Scooters</a>
+      <a href="cars.html" data-i18n="nav_cars">Cars</a>
+      <a href="guide.html" data-i18n="nav_guide">Island guide</a>
+      <a href="terms.html" aria-current="page" data-i18n="nav_how">Rental terms</a>
+      <a href="contacts.html" data-i18n="nav_contact">Contact</a>
+    </nav>
+    <div class="langs" id="langs">
+      <button type="button" class="lang-toggle" id="lang-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="lang-menu" aria-label="Language"><svg class="lang-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg><span id="lang-cur">EN</span><svg class="lang-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+      <div class="lang-menu" id="lang-menu" hidden>
+        <button type="button" data-lang="en" data-code="EN" aria-pressed="true"><b>EN</b><span>English</span><svg class="lang-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg></button>
+        <button type="button" data-lang="ru" data-code="RU" aria-pressed="false"><b>RU</b><span>Русский</span><svg class="lang-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg></button>
+        <button type="button" data-lang="uk" data-code="UA" aria-pressed="false"><b>UA</b><span>Українська</span><svg class="lang-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg></button>
+      </div>
+    </div>
+    <a class="btn btn--primary" href="contacts.html" data-i18n="talk">Talk to us</a>
+    <button type="button" class="menu-btn" id="menu-btn" aria-controls="mnav" aria-expanded="false" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  </div>
+</header>
+<nav class="mnav" id="mnav" aria-label="Menu" hidden>
+  <a href="index.html" data-i18n="nav_home">Home</a>
+  <a href="scooters.html" data-i18n="nav_scooters">Scooters</a>
+  <a href="cars.html" data-i18n="nav_cars">Cars</a>
+  <a href="guide.html" data-i18n="nav_guide">Island guide</a>
+  <a href="terms.html" aria-current="page" data-i18n="nav_how">Rental terms</a>
+  <a href="contacts.html" data-i18n="nav_contact">Contact</a>
+</nav>
+
+
+<main id="top">
+<div class="page-bg" aria-hidden="true"><picture><source media="(max-width:760px)" srcset="img/terms-hero-mobile.webp"><img src="img/terms-hero-robot.webp" alt=""></picture></div>
+<div class="tp is-active" data-terms-lang="en">
+  <section class="tp-hero"><div class="tp-wrap">
+    <p class="tp-kicker">Simple &amp; transparent</p>
+    <h1 class="tp-h1">Rental <span>terms</span></h1>
+    <p class="tp-lead">Everything you need to know before you ride. No small print — the full agreement is signed at hand-over.</p>
+    <ul class="tp-glance">
+      <li><span class="tp-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><circle cx="8" cy="12" r="2"/><path d="M5 16.5c.6-1.2 1.7-2 3-2s2.4.8 3 2M14 10h5M14 14h3"/></svg></span><div><b>Passport + licence</b><span>Age 18+, international permit recommended</span></div></li>
+      <li><span class="tp-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 7V5a2 2 0 0 0-2-2H5a2 2 0 0 0 0 4h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5"/><path d="M17 13h.01"/></svg></span><div><b>Deposit</b><span>Passport or cash, the amount depends on the model</span></div></li>
+      <li><span class="tp-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/></svg></span><div><b>Cash or online</b><span>Everything agreed upfront, no hidden fees</span></div></li>
+      <li><span class="tp-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span><div><b>Pick-up in Ban Tai</b><span>Free delivery within Ban Tai</span><em>Island-wide delivery available</em></div></li>
+      <li><span class="tp-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0 5 5L21 13l-8 8-3-3 6.3-6.3a4 4 0 0 0-5-5L9.7 5.3 12 3l2.7 3.3z"/><path d="M3 21l6-6"/></svg></span><div><b>Fair damage policy</b><span>Real cost of original parts and labour only</span><em>No hidden fees. No inflated charges</em></div></li>
+      <li><span class="tp-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span><div><b>Book at least 3 days ahead</b><span>Minimum rental — 5 days</span><em>We confirm within 48 h max, usually within a few hours</em></div></li>
+    </ul>
+  </div></section>
+
+  <section class="tp-band"><div class="tp-wrap tp-band-grid">
+    <div class="tp-band-head">
+      <p class="tp-kicker">The details</p>
+      <h2 class="tp-h2">How it works</h2>
+      <p class="tp-lead">Tap a section to open it.</p>
+    </div>
+    <div class="tp-list">
+      <details class="tp-item" open>
+        <summary><span class="tp-num">01</span>How booking works<span class="tp-chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span></summary>
+        <div class="tp-body"><ul>
+          <li>Book <b>at least 3 days</b> before your rental starts. The minimum rental period is <b>5 days</b>.</li>
+          <li>We confirm your request within <b>48 hours</b> at most — usually within a few hours.</li>
+          <li>Prepayment and deposit are agreed separately.</li>
+        </ul></div>
+      </details>
+      <details class="tp-item">
+        <summary><span class="tp-num">02</span>Documents<span class="tp-chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span></summary>
+        <div class="tp-body">
+          <p>Please bring on pick-up:</p>
+          <ul><li>Passport</li><li>Driving licence (an International Driving Permit is recommended)</li><li>You must be <b>18 or older</b></li></ul>
+          <p>Every rental comes with a <b>signed rental agreement</b>.</p>
+        </div>
+      </details>
+      <details class="tp-item">
+        <summary><span class="tp-num">03</span>Deposit &amp; payment<span class="tp-chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span></summary>
+        <div class="tp-body">
+          <p><b>Deposit</b> — your passport or a cash deposit. The amount depends on the model:</p>
+          <ul class="tp-rows">
+            <li>Regular scooters (110–160cc)<span class="tp-chip">$100–300</span></li>
+            <li>Maxi scooters (300–350cc)<span class="tp-chip">from $400</span></li>
+            <li>Cars<span class="tp-chip">from $400</span></li>
+          </ul>
+          <p class="tp-sub">Payment</p>
+          <ul class="tp-rows">
+            <li><span><b>Booking prepayment</b><small class="tp-hint">Non-refundable</small></span><span class="tp-chip">from 1,500 ฿</span></li>
+            <li><span>We accept</span><span class="tp-chips"><span class="tp-chip">Cash</span><span class="tp-chip">Visa / Mastercard</span><span class="tp-chip">Bank transfer</span><span class="tp-chip">USDT</span></span></li>
+          </ul>
+          <p>All prices are agreed in advance, with no hidden fees.</p>
+        </div>
+      </details>
+      <details class="tp-item">
+        <summary><span class="tp-num">04</span>Returning early<span class="tp-chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span></summary>
+        <div class="tp-body">
+          <p>If you return the vehicle early, the following applies:</p>
+          <ul>
+            <li><b>Daily rental:</b> returning less than 3 days before the end of the agreement — the unused days are not refunded.</li>
+            <li><b>Monthly rental:</b> returning less than 7 days before the end of the agreement — the rental price is not recalculated.</li>
+            <li><b>In all other cases:</b> the price is recalculated at the standard rate for the actual period of use.</li>
+          </ul>
+          <ul class="tp-rows">
+            <li><span><b>Early return service fee</b><small class="tp-hint">Covers processing the early return and the lost chance to pre-book the vehicle online for the freed-up period.</small></span><span class="tp-chip">300 ฿</span></li>
+          </ul>
+        </div>
+      </details>
+      <details class="tp-item">
+        <summary><span class="tp-num">05</span>Extending your rental<span class="tp-chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span></summary>
+        <div class="tp-body">
+          <ul>
+            <li>Tell us about an extension <b>well in advance</b> — in high season vehicles are often booked for the very next day.</li>
+            <li><b>Half-day extension</b> (e.g. afternoon to evening) is possible by arrangement, usually about <b>50% of the daily price</b>.</li>
+          </ul>
+        </div>
+      </details>
+      <details class="tp-item">
+        <summary><span class="tp-num">06</span>Damage &amp; responsibility<span class="tp-chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span></summary>
+        <div class="tp-body">
+          <ul>
+            <li>Before the rental we take <b>photos and a video</b> of the scooter together with you.</li>
+            <li>Damage is paid at the <b>real cost of original parts and labour</b>. In rare cases, downtime during repairs may also be charged.</li>
+            <li>In most cases the deposit is enough to cover it.</li>
+          </ul>
+          <p class="tp-sub">The renter is responsible for:</p>
+          <ul class="tp-rows">
+            <li><span><b>Fines and damage to third parties</b> — any fine or damage must be covered by the renter</span><span class="tp-chip">in full</span></li>
+            <li><span><b>Flat tyre</b> — fixed by the renter at the nearest repair shop</span><span class="tp-chip">~100–200 ฿</span></li>
+            <li><span><b>Dead battery from lights left on</b> — service fee, depends on location</span><span class="tp-chip">100–400 ฿</span></li>
+          </ul>
+          <div class="tp-actions"><a class="tp-btn tp-btn--ghost" href="#rental-agreement"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h5"/></svg>View rental agreement</a></div>
+        </div>
+      </details>
+      <details class="tp-item">
+        <summary><span class="tp-num">07</span>Pick-up &amp; delivery<span class="tp-chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span></summary>
+        <div class="tp-body">
+          <ul class="tp-rows">
+            <li>Our office in Ban Tai<span class="tp-chip tp-chip--free">Free</span></li>
+            <li>Delivery within Ban Tai<span class="tp-chip tp-chip--free">Free</span></li>
+            <li><span>Thong Sala pier</span><span class="tp-chips"><span class="tp-chip">one way · 200 ฿</span><span class="tp-chip">round trip · 300 ฿</span></span></li>
+            <li><span>Around the island<small class="tp-hint">Depends on the distance</small></span><span class="tp-chip">one way · 100–400 ฿</span></li>
+          </ul>
+        </div>
+      </details>
+    </div>
+  </div></section>
+</div>
+
+<div class="tp" data-terms-lang="ru">
+  <section class="tp-hero"><div class="tp-wrap">
+    <p class="tp-kicker">Просто и прозрачно</p>
+    <h1 class="tp-h1">Условия <span>аренды</span></h1>
+    <p class="tp-lead">Всё, что нужно знать перед арендой. Без мелкого шрифта — полный договор подписывается при выдаче.</p>
+    <ul class="tp-glance">
+      <li><span class="tp-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><circle cx="8" cy="12" r="2"/><path d="M5 16.5c.6-1.2 1.7-2 3-2s2.4.8 3 2M14 10h5M14 14h3"/></svg></span><div><b>Паспорт + права</b><span>Возраст от 18 лет, желательно международные права</span></div></li>
+      <li><span class="tp-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 7V5a2 2 0 0 0-2-2H5a2 2 0 0 0 0 4h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5"/><path d="M17 13h.01"/></svg></span><div><b>Депозит</b><span>Паспорт или деньги, сумма зависит от модели</span></div></li>
+      <li><span class="tp-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/></svg></span><div><b>Наличные или онлайн</b><span>Всё обсуждаем заранее, без скрытых платежей</span></div></li>
+      <li><span class="tp-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span><div><b>Выдача на Бантае</b><span>Доставка по Бантаю бесплатно</span><em>Есть возможность доставки по острову</em></div></li>
+      <li><span class="tp-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0 5 5L21 13l-8 8-3-3 6.3-6.3a4 4 0 0 0-5-5L9.7 5.3 12 3l2.7 3.3z"/><path d="M3 21l6-6"/></svg></span><div><b>Честно о повреждениях</b><span>Только реальная стоимость запчастей и работы</span><em>Без скрытых платежей и завышенных цен</em></div></li>
+      <li><span class="tp-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span><div><b>Бронирование минимум за 3 суток</b><span>Минимальный срок аренды — 5 дней</span><em>Подтверждаем максимум за 48 часов, обычно — в течение нескольких часов</em></div></li>
+    </ul>
+  </div></section>
+
+  <section class="tp-band"><div class="tp-wrap tp-band-grid">
+    <div class="tp-band-head">
+      <p class="tp-kicker">Подробности</p>
+      <h2 class="tp-h2">Как всё устроено</h2>
+      <p class="tp-lead">Нажмите на раздел, чтобы раскрыть его.</p>
+    </div>
+    <div class="tp-list">
+      <details class="tp-item" open>
+        <summary><span class="tp-num">01</span>Как проходит бронирование<span class="tp-chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span></summary>
+        <div class="tp-body"><ul>
+          <li>Бронируйте <b>минимум за 3 суток</b> до начала аренды. Минимальный срок аренды — <b>5 дней</b>.</li>
+          <li>Подтверждаем заявку максимум в течение <b>48 часов</b> — обычно в течение нескольких часов.</li>
+          <li>Предоплата и депозит согласуются отдельно.</li>
+        </ul></div>
+      </details>
+      <details class="tp-item">
+        <summary><span class="tp-num">02</span>Документы<span class="tp-chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span></summary>
+        <div class="tp-body">
+          <p>При получении техники нужны:</p>
+          <ul><li>Паспорт</li><li>Водительские права (желательно международные)</li><li>Возраст <b>от 18 лет</b></li></ul>
+          <p>Каждая аренда оформляется <b>договором</b>, который подписывается при выдаче.</p>
+        </div>
+      </details>
+      <details class="tp-item">
+        <summary><span class="tp-num">03</span>Депозит и оплата<span class="tp-chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span></summary>
+        <div class="tp-body">
+          <p><b>Депозит</b> — паспорт или денежный залог. Сумма зависит от модели:</p>
+          <ul class="tp-rows">
+            <li>Обычные скутеры (110–160cc)<span class="tp-chip">100–300$</span></li>
+            <li>Макси-скутеры (300–350cc)<span class="tp-chip">от 400$</span></li>
+            <li>Авто<span class="tp-chip">от 400$</span></li>
+          </ul>
+          <p class="tp-sub">Оплата</p>
+          <ul class="tp-rows">
+            <li><span><b>Предоплата за бронирование</b><small class="tp-hint">Не возвращается</small></span><span class="tp-chip">от 1 500 ฿</span></li>
+            <li><span>Принимаем</span><span class="tp-chips"><span class="tp-chip">Наличные</span><span class="tp-chip">Visa / Mastercard</span><span class="tp-chip">Банковский перевод</span><span class="tp-chip">USDT</span></span></li>
+          </ul>
+          <p>Все условия согласуем заранее, никаких скрытых платежей.</p>
+        </div>
+      </details>
+      <details class="tp-item">
+        <summary><span class="tp-num">04</span>Досрочный возврат<span class="tp-chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span></summary>
+        <div class="tp-body">
+          <p>При досрочном возврате транспортного средства применяются следующие условия:</p>
+          <ul>
+            <li><b>Посуточная аренда:</b> при возврате менее чем за 3 дня до окончания договора неиспользованные дни не компенсируются.</li>
+            <li><b>Помесячная аренда:</b> при возврате менее чем за 7 дней до окончания договора перерасчёт стоимости аренды не производится.</li>
+            <li><b>В остальных случаях:</b> стоимость аренды пересчитывается по стандартному тарифу за фактический период использования транспортного средства.</li>
+          </ul>
+          <ul class="tp-rows">
+            <li><span><b>Сервисный сбор за досрочный возврат</b><small class="tp-hint">Учитывает обработку досрочного возврата и потерю возможности предварительного онлайн-бронирования транспорта на освобождаемый период.</small></span><span class="tp-chip">300 ฿</span></li>
+          </ul>
+        </div>
+      </details>
+      <details class="tp-item">
+        <summary><span class="tp-num">05</span>Продление аренды<span class="tp-chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span></summary>
+        <div class="tp-body">
+          <ul>
+            <li>Предупреждайте о продлении <b>заблаговременно</b> — в высокий сезон технику часто бронируют день в день.</li>
+            <li><b>Продление на полдня</b> (например, с обеда до вечера) — по договорённости, обычно около <b>50% стоимости дня</b>.</li>
+          </ul>
+        </div>
+      </details>
+      <details class="tp-item">
+        <summary><span class="tp-num">06</span>Повреждения и ответственность<span class="tp-chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span></summary>
+        <div class="tp-body">
+          <ul>
+            <li>Перед арендой вместе с вами делаем <b>фото и видео</b> байка.</li>
+            <li>Повреждения оплачиваются по <b>реальной стоимости оригинальных запчастей и работы</b>. В редких случаях может учитываться простой на время ремонта.</li>
+            <li>В большинстве случаев достаточно депозита.</li>
+          </ul>
+          <p class="tp-sub">Арендатор несёт ответственность за:</p>
+          <ul class="tp-rows">
+            <li><span><b>Штрафы и ущерб третьим лицам</b> — арендатор возмещает любой штраф или ущерб</span><span class="tp-chip">полностью</span></li>
+            <li><span><b>Пробитое колесо</b> — арендатор ремонтирует сам в ближайшей мастерской</span><span class="tp-chip">~100–200 ฿</span></li>
+            <li><span><b>Сел аккумулятор из-за включённых фар</b> — сервисный сбор, зависит от локации</span><span class="tp-chip">100–400 ฿</span></li>
+          </ul>
+          <div class="tp-actions"><a class="tp-btn tp-btn--ghost" href="#rental-agreement"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h5"/></svg>Посмотреть договор аренды</a></div>
+        </div>
+      </details>
+      <details class="tp-item">
+        <summary><span class="tp-num">07</span>Получение и доставка<span class="tp-chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span></summary>
+        <div class="tp-body">
+          <ul class="tp-rows">
+            <li>Наш офис на Бантае<span class="tp-chip tp-chip--free">Бесплатно</span></li>
+            <li>Доставка по Бантаю<span class="tp-chip tp-chip--free">Бесплатно</span></li>
+            <li><span>Пирс Тонгсала</span><span class="tp-chips"><span class="tp-chip">в одну сторону · 200 ฿</span><span class="tp-chip">в обе стороны · 300 ฿</span></span></li>
+            <li><span>По острову<small class="tp-hint">Зависит от расстояния</small></span><span class="tp-chip">в одну сторону · 100–400 ฿</span></li>
+          </ul>
+        </div>
+      </details>
+    </div>
+  </div></section>
+</div>
+
+<div class="tp" data-terms-lang="uk">
+  <section class="tp-hero"><div class="tp-wrap">
+    <p class="tp-kicker">Просто й прозоро</p>
+    <h1 class="tp-h1">Умови <span>оренди</span></h1>
+    <p class="tp-lead">Усе, що потрібно знати перед орендою. Без дрібного шрифту — повний договір підписується під час видачі.</p>
+    <ul class="tp-glance">
+      <li><span class="tp-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><circle cx="8" cy="12" r="2"/><path d="M5 16.5c.6-1.2 1.7-2 3-2s2.4.8 3 2M14 10h5M14 14h3"/></svg></span><div><b>Паспорт + права</b><span>Вік від 18 років, бажано міжнародні права</span></div></li>
+      <li><span class="tp-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 7V5a2 2 0 0 0-2-2H5a2 2 0 0 0 0 4h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5"/><path d="M17 13h.01"/></svg></span><div><b>Депозит</b><span>Паспорт або гроші, сума залежить від моделі</span></div></li>
+      <li><span class="tp-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/></svg></span><div><b>Готівка або онлайн</b><span>Усе обговорюємо заздалегідь, без прихованих платежів</span></div></li>
+      <li><span class="tp-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span><div><b>Видача на Бантаї</b><span>Доставка по Бантаю безкоштовна</span><em>Є можливість доставки по острову</em></div></li>
+      <li><span class="tp-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0 5 5L21 13l-8 8-3-3 6.3-6.3a4 4 0 0 0-5-5L9.7 5.3 12 3l2.7 3.3z"/><path d="M3 21l6-6"/></svg></span><div><b>Чесно про пошкодження</b><span>Лише реальна вартість запчастин і роботи</span><em>Без прихованих платежів і завищених цін</em></div></li>
+      <li><span class="tp-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span><div><b>Бронювання щонайменше за 3 доби</b><span>Мінімальний термін оренди — 5 днів</span><em>Підтверджуємо максимум за 48 годин, зазвичай — протягом кількох годин</em></div></li>
+    </ul>
+  </div></section>
+
+  <section class="tp-band"><div class="tp-wrap tp-band-grid">
+    <div class="tp-band-head">
+      <p class="tp-kicker">Подробиці</p>
+      <h2 class="tp-h2">Як усе влаштовано</h2>
+      <p class="tp-lead">Натисніть на розділ, щоб розгорнути його.</p>
+    </div>
+    <div class="tp-list">
+      <details class="tp-item" open>
+        <summary><span class="tp-num">01</span>Як проходить бронювання<span class="tp-chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span></summary>
+        <div class="tp-body"><ul>
+          <li>Бронюйте <b>щонайменше за 3 доби</b> до початку оренди. Мінімальний термін оренди — <b>5 днів</b>.</li>
+          <li>Підтверджуємо заявку максимум протягом <b>48 годин</b> — зазвичай протягом кількох годин.</li>
+          <li>Передоплата й депозит погоджуються окремо.</li>
+        </ul></div>
+      </details>
+      <details class="tp-item">
+        <summary><span class="tp-num">02</span>Документи<span class="tp-chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span></summary>
+        <div class="tp-body">
+          <p>Під час отримання техніки потрібні:</p>
+          <ul><li>Паспорт</li><li>Водійське посвідчення (бажано міжнародне)</li><li>Вік <b>від 18 років</b></li></ul>
+          <p>Кожна оренда оформлюється <b>договором</b>, який підписується під час видачі.</p>
+        </div>
+      </details>
+      <details class="tp-item">
+        <summary><span class="tp-num">03</span>Депозит і оплата<span class="tp-chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span></summary>
+        <div class="tp-body">
+          <p><b>Депозит</b> — паспорт або грошова застава. Сума залежить від моделі:</p>
+          <ul class="tp-rows">
+            <li>Звичайні скутери (110–160cc)<span class="tp-chip">100–300$</span></li>
+            <li>Максі-скутери (300–350cc)<span class="tp-chip">від 400$</span></li>
+            <li>Авто<span class="tp-chip">від 400$</span></li>
+          </ul>
+          <p class="tp-sub">Оплата</p>
+          <ul class="tp-rows">
+            <li><span><b>Передоплата за бронювання</b><small class="tp-hint">Не повертається</small></span><span class="tp-chip">від 1 500 ฿</span></li>
+            <li><span>Приймаємо</span><span class="tp-chips"><span class="tp-chip">Готівка</span><span class="tp-chip">Visa / Mastercard</span><span class="tp-chip">Банківський переказ</span><span class="tp-chip">USDT</span></span></li>
+          </ul>
+          <p>Усі умови погоджуємо заздалегідь, жодних прихованих платежів.</p>
+        </div>
+      </details>
+      <details class="tp-item">
+        <summary><span class="tp-num">04</span>Дострокове повернення<span class="tp-chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span></summary>
+        <div class="tp-body">
+          <p>У разі дострокового повернення транспортного засобу діють такі умови:</p>
+          <ul>
+            <li><b>Подобова оренда:</b> у разі повернення менш ніж за 3 дні до закінчення договору невикористані дні не компенсуються.</li>
+            <li><b>Помісячна оренда:</b> у разі повернення менш ніж за 7 днів до закінчення договору перерахунок вартості оренди не здійснюється.</li>
+            <li><b>В інших випадках:</b> вартість оренди перераховується за стандартним тарифом за фактичний період використання транспортного засобу.</li>
+          </ul>
+          <ul class="tp-rows">
+            <li><span><b>Сервісний збір за дострокове повернення</b><small class="tp-hint">Враховує обробку дострокового повернення та втрату можливості попереднього онлайн-бронювання транспорту на період, що звільняється.</small></span><span class="tp-chip">300 ฿</span></li>
+          </ul>
+        </div>
+      </details>
+      <details class="tp-item">
+        <summary><span class="tp-num">05</span>Продовження оренди<span class="tp-chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span></summary>
+        <div class="tp-body">
+          <ul>
+            <li>Попереджайте про продовження <b>завчасно</b> — у високий сезон техніку часто бронюють день у день.</li>
+            <li><b>Продовження на пів дня</b> (наприклад, з обіду до вечора) — за домовленістю, зазвичай близько <b>50% вартості дня</b>.</li>
+          </ul>
+        </div>
+      </details>
+      <details class="tp-item">
+        <summary><span class="tp-num">06</span>Пошкодження та відповідальність<span class="tp-chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span></summary>
+        <div class="tp-body">
+          <ul>
+            <li>Перед орендою разом з вами робимо <b>фото й відео</b> байка.</li>
+            <li>Пошкодження оплачуються за <b>реальною вартістю оригінальних запчастин і роботи</b>. У рідкісних випадках може враховуватися простій на час ремонту.</li>
+            <li>У більшості випадків достатньо депозиту.</li>
+          </ul>
+          <p class="tp-sub">Орендар несе відповідальність за:</p>
+          <ul class="tp-rows">
+            <li><span><b>Штрафи та шкоду третім особам</b> — орендар відшкодовує будь-який штраф або шкоду</span><span class="tp-chip">повністю</span></li>
+            <li><span><b>Пробите колесо</b> — орендар ремонтує сам у найближчій майстерні</span><span class="tp-chip">~100–200 ฿</span></li>
+            <li><span><b>Сів акумулятор через увімкнені фари</b> — сервісний збір, залежить від локації</span><span class="tp-chip">100–400 ฿</span></li>
+          </ul>
+          <div class="tp-actions"><a class="tp-btn tp-btn--ghost" href="#rental-agreement"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h5"/></svg>Переглянути договір оренди</a></div>
+        </div>
+      </details>
+      <details class="tp-item">
+        <summary><span class="tp-num">07</span>Отримання та доставка<span class="tp-chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span></summary>
+        <div class="tp-body">
+          <ul class="tp-rows">
+            <li>Наш офіс на Бантаї<span class="tp-chip tp-chip--free">Безкоштовно</span></li>
+            <li>Доставка по Бантаю<span class="tp-chip tp-chip--free">Безкоштовно</span></li>
+            <li><span>Пірс Тонгсала</span><span class="tp-chips"><span class="tp-chip">в один бік · 200 ฿</span><span class="tp-chip">в обидва боки · 300 ฿</span></span></li>
+            <li><span>По острову<small class="tp-hint">Залежить від відстані</small></span><span class="tp-chip">в один бік · 100–400 ฿</span></li>
+          </ul>
+        </div>
+      </details>
+    </div>
+  </div></section>
+</div>
+</main>
+<footer class="ftr" id="contact">
+  <picture><source media="(max-width:760px)" srcset="img/footer-road-mobile.webp"><img class="ftr-bg" src="img/footer-road.webp" alt="" loading="lazy"></picture>
+  <div class="wrap">
+  <div class="ftr-cta">
+      <div class="cta-text">
+        <p class="kicker" data-i18n="cta_k">Ready to explore?</p>
+        <h2 class="h2"><span data-i18n="cta_h1" style="color:var(--tp-text)">Let's get you</span><br><span data-i18n="cta_h2">on the road</span></h2>
+        <div class="btns cta-btns">
+          <a class="btn btn--glass" href="cars.html"><span data-i18n="cta_cars">Explore cars</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn btn--glass" href="scooters.html"><span data-i18n="cta_scooters">Explore scooters</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+  </div>
+  </div>
+  <div class="ftr-bar"><div class="wrap">
+  <div class="ftr-grid">
+    <a class="brand" href="index.html" aria-label="Drive Phangan"><span class="brand-mark"><img src="img/logo-mark.webp" alt=""></span><img class="brand-word" src="img/brand-word-2026.png" alt="Drive Phangan"></a>
+    <nav aria-label="Footer">
+      <a href="index.html" data-i18n="nav_home">Home</a>
+      <a href="scooters.html" data-i18n="nav_scooters">Scooters</a>
+      <a href="cars.html" data-i18n="nav_cars">Cars</a>
+      <a href="guide.html" data-i18n="nav_guide">Island guide</a>
+      <a href="terms.html" aria-current="page" data-i18n="nav_how">Rental terms</a>
+      <a href="contacts.html" data-i18n="nav_contact">Contact</a>
+    </nav>
+    <address>30/16, Tambon Ban Tai, Koh Phangan, Surat Thani 84280</address>
+  </div>
+  <div class="ftr-bottom">
+    <span>© 2026 Drive Phangan</span>
+  </div>
+</div></div></footer>
+<script>
+const T={
+en:{},
+ru:{rv_sample:"Пример · заменить реальным отзывом",rv_text:"Здесь будет текст реального отзыва из Google Maps: что гость арендовал и как прошла поездка.",rv_date:"Дата отзыва",rv_name:"Имя гостя",rv_sub:"Более 150 отзывов путешественников в Google Maps",st_k:"Кратко о нас",ab_k:"О нас",ab_h:"— аренда скутеров и автомобилей на Ко Пангане",ab_p1:"С 2019 года DRIVE PHANGAN помогает гостям острова свободно передвигаться и предлагает надёжную аренду скутеров и автомобилей.",ab_p2:"В нашем парке есть почти все популярные модели: Honda Scoopy, Click, PCX и ADV, Yamaha Grand Filano, Aerox и NMAX. Мы регулярно обновляем парк и следим за состоянием техники, чтобы каждая поездка была комфортной и безопасной.",ab_c1b:"Понятные условия аренды",ab_c1:"— прозрачные цены и никаких скрытых платежей.",ab_c2b:"Более 150 отзывов",ab_c2:"— нам доверяют путешественники и постоянные клиенты.",ab_c3b:"Поддержка",ab_c3:"— опытная команда готова помочь во время аренды.",st1:"Работаем с 2019 года",st1s:"Местный бизнес с опытом",st2:"Более 150 отзывов",st2s:"Нас рекомендуют на Google Maps",st3:"Ухоженный автопарк",st3s:"Качественная техника и регулярное обслуживание",st4:"Поддержка",st4s:"Опытная команда готова помочь во время аренды",note:"Превью от Claude · черновик дизайна. Ссылки ведут на текущий превью-сайт.",nav_home:"Главная",nav_scooters:"Скутеры",nav_cars:"Авто",nav_guide:"Гид по острову",nav_how:"Условия аренды",nav_contact:"Контакты",talk:"Написать нам",kicker:"Аренда скутеров и авто · Ко Панган",h1a:"Выбор путешественников.",h1b:"Опыт местных.",lead:"Исследуйте остров в своём темпе. Выберите транспорт, пришлите даты — остальное сделает наша команда.",cta_scooters:"Смотреть скутеры",cta_cars:"Смотреть авто",fact1:"Скутеры 110–350cc",fact2:"Бесплатная доставка по Бантаю",fact3:"Ответ в течение нескольких часов",t1:"Ухоженный парк",t1s:"Фото и видео при каждой выдаче",t2:"Нам доверяют",t2s:"Реальные отзывы в Google Maps",t3:"Доставка по острову",t3s:"По Бантаю бесплатно, к пирсу — по запросу",t4:"Местная команда",t4s:"Telegram или WhatsApp, на вашем языке",rides_k:"Выберите транспорт",rides_h:"Найдите свой транспорт",rides_l:"Выберите машину или скутер.",sc_h:"Скутеры",sc_p:"От лёгких городских до макси-скутеров для поездок по острову",sc_1:"Небольшие скутеры",sc_2:"Комфортные скутеры",sc_3:"Макси-скутеры",car_h:"Авто",car_p:"Для семьи, дождливых дней и поездок в своём темпе",car_1:"Выдача на Бантае",car_1c:"Бесплатно",car_2:"Минимальный срок",car_2c:"5 дней",car_3:"Депозит",car_3c:"от 400$",how_k:"Как это работает",how_h:"Три шага до дороги",how_l:"Бронируйте минимум за 3 суток. Минимальный срок аренды — 5 дней.",terms_btn:"Условия аренды",s1:"Выберите транспорт",s1s:"Скутеры и авто с реальными фото, объёмом двигателя и годом.",s2:"Пришлите даты",s2s:"Оставьте заявку онлайн или напишите нам. Подтверждаем максимум за 48 часов, обычно — за несколько часов.",s2c:"Предоплата от 1 500 ฿",s3:"Получите на Бантае",s3s:"Возьмите паспорт и права. Вместе снимаем байк на видео и подписываем договор при выдаче.",s3c:"Доставка по Бантаю бесплатно",rev_k:"Реальный опыт",rev_h:"Нам доверяют путешественники",rev_b:"Отзывы путешественников в Google Maps",rev_s:"Узнайте, что говорят о наших скутерах и сервисе, и поделитесь своим опытом.",rev_btn:"Читать все отзывы в Google",cta_k:"Готовы к поездке?",cta_h1:"Пора",cta_h2:"в дорогу",cta_l:"Пришлите даты — подберём транспорт и назовём цену на ваш сезон.",f_terms:"Условия аренды",f_privacy:"Конфиденциальность"},
+uk:{rv_sample:"Приклад · замінити справжнім відгуком",rv_text:"Тут буде текст справжнього відгуку з Google Maps: що гість орендував і як минула поїздка.",rv_date:"Дата відгуку",rv_name:"Ім'я гостя",rv_sub:"Понад 150 відгуків мандрівників у Google Maps",st_k:"Коротко про нас",ab_k:"Про нас",ab_h:"— оренда скутерів та автомобілів на Ко Пангані",ab_p1:"З 2019 року DRIVE PHANGAN допомагає гостям острова вільно пересуватися й пропонує надійну оренду скутерів та автомобілів.",ab_p2:"У нашому парку є майже всі популярні моделі: Honda Scoopy, Click, PCX і ADV, Yamaha Grand Filano, Aerox і NMAX. Ми регулярно оновлюємо парк і стежимо за станом техніки, щоб кожна поїздка була комфортною та безпечною.",ab_c1b:"Зрозумілі умови оренди",ab_c1:"— прозорі ціни й жодних прихованих платежів.",ab_c2b:"Понад 150 відгуків",ab_c2:"— нам довіряють мандрівники та постійні клієнти.",ab_c3b:"Підтримка",ab_c3:"— досвідчена команда готова допомогти під час оренди.",st1:"Працюємо з 2019 року",st1s:"Місцевий бізнес із досвідом",st2:"Понад 150 відгуків",st2s:"Нас рекомендують у Google Maps",st3:"Доглянутий автопарк",st3s:"Якісна техніка та регулярне обслуговування",st4:"Підтримка",st4s:"Досвідчена команда готова допомогти під час оренди",note:"Превʼю від Claude · чернетка дизайну. Посилання ведуть на поточний превʼю-сайт.",nav_home:"Головна",nav_scooters:"Скутери",nav_cars:"Авто",nav_guide:"Гід островом",nav_how:"Умови оренди",nav_contact:"Контакти",talk:"Написати нам",kicker:"Оренда скутерів та авто · Ко Панган",h1a:"Вибір мандрівників.",h1b:"Досвід місцевих.",lead:"Досліджуйте острів у своєму темпі. Оберіть транспорт, надішліть дати — решту зробить наша команда.",cta_scooters:"Дивитися скутери",cta_cars:"Дивитися авто",fact1:"Скутери 110–350cc",fact2:"Безкоштовна доставка по Бантаю",fact3:"Відповідь протягом кількох годин",t1:"Доглянутий парк",t1s:"Фото й відео під час кожної видачі",t2:"Нам довіряють",t2s:"Справжні відгуки в Google Maps",t3:"Доставка островом",t3s:"По Бантаю безкоштовно, до пірсу — на запит",t4:"Місцева команда",t4s:"Telegram або WhatsApp, вашою мовою",rides_k:"Оберіть транспорт",rides_h:"Знайдіть свій транспорт",rides_l:"Оберіть машину чи скутер.",sc_h:"Скутери",sc_p:"Від легких міських до максі-скутерів для поїздок островом",sc_1:"Невеликі скутери",sc_2:"Комфортні скутери",sc_3:"Максі-скутери",car_h:"Авто",car_p:"Для родини, дощових днів і поїздок у своєму темпі",car_1:"Видача на Бантаї",car_1c:"Безкоштовно",car_2:"Мінімальний термін",car_2c:"5 днів",car_3:"Депозит",car_3c:"від 400$",how_k:"Як це працює",how_h:"Три кроки до дороги",how_l:"Бронюйте щонайменше за 3 доби. Мінімальний термін оренди — 5 днів.",terms_btn:"Умови оренди",s1:"Оберіть транспорт",s1s:"Скутери та авто зі справжніми фото, обʼємом двигуна та роком.",s2:"Надішліть дати",s2s:"Залиште заявку онлайн або напишіть нам. Підтверджуємо максимум за 48 годин, зазвичай — за кілька годин.",s2c:"Передоплата від 1 500 ฿",s3:"Отримайте на Бантаї",s3s:"Візьміть паспорт і права. Разом знімаємо байк на відео й підписуємо договір під час видачі.",s3c:"Доставка по Бантаю безкоштовна",rev_k:"Справжній досвід",rev_h:"Нам довіряють мандрівники",rev_b:"Відгуки мандрівників у Google Maps",rev_s:"Дізнайтеся, що кажуть про наші скутери та сервіс, і поділіться своїм досвідом.",rev_btn:"Читати всі відгуки в Google",cta_k:"Готові до поїздки?",cta_h1:"Час",cta_h2:"у дорогу",cta_l:"Надішліть дати — підберемо транспорт і назвемо ціну на ваш сезон.",f_terms:"Умови оренди",f_privacy:"Конфіденційність"}
+};
+const nodes=[...document.querySelectorAll('[data-i18n]')];
+nodes.forEach(n=>{T.en[n.dataset.i18n]=n.textContent});
+function setLang(l){
+  document.documentElement.lang=l;
+  nodes.forEach(n=>{const v=(T[l]||{})[n.dataset.i18n]??T.en[n.dataset.i18n];if(v!=null)n.textContent=v});
+  document.querySelectorAll('[data-lang]').forEach(b=>{b.setAttribute('aria-pressed',b.dataset.lang===l);if(b.dataset.lang===l)document.getElementById('lang-cur').textContent=b.dataset.code});
+  document.querySelectorAll('[data-terms-lang]').forEach(d=>d.classList.toggle('is-active',d.dataset.termsLang===l));
+  try{localStorage.setItem('dp-lang',l)}catch(e){}
+}
+const langT=document.getElementById('lang-toggle'),langM=document.getElementById('lang-menu');
+function langOpen(o){langM.hidden=!o;langT.setAttribute('aria-expanded',o)}
+langT.addEventListener('click',e=>{e.stopPropagation();langOpen(langM.hidden)});
+document.querySelectorAll('[data-lang]').forEach(b=>b.addEventListener('click',()=>{setLang(b.dataset.lang);langOpen(false);langT.focus()}));
+document.addEventListener('click',e=>{if(!e.target.closest('#langs'))langOpen(false)});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!langM.hidden){langOpen(false);langT.focus()}});
+try{const s=localStorage.getItem('dp-lang');if(s&&T[s])setLang(s)}catch(e){}
+/* footer menu and address: always one line, shrink text to fit */
+function fitFtr(){document.querySelectorAll(".ftr nav,.ftr address").forEach(el=>{el.style.fontSize="";if(window.innerWidth>760)return;let fs=parseFloat(getComputedStyle(el).fontSize);while(el.scrollWidth>el.clientWidth+1&&fs>8){fs-=.5;el.style.fontSize=fs+"px"}})}
+window.addEventListener("resize",fitFtr);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fitFtr);
+document.querySelectorAll("[data-lang]").forEach(b=>b.addEventListener("click",()=>setTimeout(fitFtr)));
+setTimeout(fitFtr);
+const hdr=document.getElementById('hdr'),mb=document.getElementById('menu-btn'),mnav=document.getElementById('mnav');
+function menuOpen(o){if(o)mnav.style.top=(hdr.getBoundingClientRect().bottom+8)+'px';mnav.hidden=!o;mb.setAttribute('aria-expanded',o)}
+mb.addEventListener('click',e=>{e.stopPropagation();menuOpen(mnav.hidden)});
+mnav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>menuOpen(false)));
+document.addEventListener('click',e=>{if(!mnav.hidden&&!e.target.closest('#mnav'))menuOpen(false)});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!mnav.hidden){menuOpen(false);mb.focus()}});
+window.addEventListener('scroll',()=>{if(!mnav.hidden)mnav.style.top=(hdr.getBoundingClientRect().bottom+8)+'px'},{passive:true});
+window.addEventListener('resize',()=>{if(window.innerWidth>1080)menuOpen(false)});
+</script>
+</body>
+</html>
